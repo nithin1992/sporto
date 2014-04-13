@@ -73,7 +73,7 @@ public class AndroidListViewCursorAdaptorActivity extends Activity {
 
     MainDatabaseHandler.KEY_LOCALITY,
 
-    MainDatabaseHandler.KEY_CATEGORY,
+
 
     MainDatabaseHandler.KEY_RATING,
 
@@ -90,9 +90,9 @@ public class AndroidListViewCursorAdaptorActivity extends Activity {
     R.id.name,
 
     R.id.locality,
+    
 
-    R.id.category,
-
+    
     R.id.rating,
 
     R.id.distance,

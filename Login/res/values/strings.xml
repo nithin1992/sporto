@@ -11,7 +11,7 @@
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item>featured places</item>
+        <item>search</item>
         <item>my favorite</item>
         <item>advertise with us</item>
         <item>rate this app</item>
@@ -22,7 +22,7 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_action_search</item>
         <item>@drawable/myfav</item>
         <item>@drawable/awu</item>
         <item>@drawable/rta</item>
