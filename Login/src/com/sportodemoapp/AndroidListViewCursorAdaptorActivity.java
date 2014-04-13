@@ -158,21 +158,6 @@ public class AndroidListViewCursorAdaptorActivity extends Activity {
    }
 
   });*/
-
- 
-
-    dataAdapter.setFilterQueryProvider(new FilterQueryProvider() {
-
-         public Cursor runQuery(CharSequence constraint) {
-
-             return dbHelper.fetchResultsByName(constraint.toString());
-
-         }
-
-     });
-
- 
-
  }
 
 }

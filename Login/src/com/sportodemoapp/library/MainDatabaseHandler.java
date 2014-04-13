@@ -125,27 +125,7 @@ public static final String KEY_ROWID = "_id";
 
 
  
- public Cursor fetchResultsByName(String inputText) throws SQLException {
-  Log.w(TAG, inputText);
-  Cursor mCursor = null;
-  if (inputText == null  ||  inputText.length () == 0)  {
-   mCursor = mDb.query(searchResults, new String[] {KEY_ROWID, KEY_NAME,
-     KEY_LOCALITY, KEY_CATEGORY, KEY_RATING, KEY_DISTANCE}, 
-     null, null, null, null, null);
- 
-  }
-  else {
-   mCursor = mDb.query(true, searchResults, new String[] {KEY_ROWID, KEY_NAME,
-     KEY_LOCALITY, KEY_CATEGORY, KEY_RATING, KEY_DISTANCE}, 
-     KEY_NAME + " like '%" + inputText + "%'", null,
-     null, null, null, null);
-  }
-  if (mCursor != null) {
-   mCursor.moveToFirst();
-  }
-  return mCursor;
- 
- }
+
  
  public Cursor fetchAllResults() {
  
