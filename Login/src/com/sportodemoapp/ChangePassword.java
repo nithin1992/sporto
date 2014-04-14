@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.sportodemoapp.R;
 import com.sportodemoapp.library.DatabaseHandler;
+import com.sportodemoapp.library.SessionManager;
 import com.sportodemoapp.library.UserFunctions;
 
 import org.json.JSONException;
@@ -39,6 +40,7 @@ public class ChangePassword extends Activity {
     TextView alert;
     Button changepass;
     Button cancel;
+    Button btnLogout;
 
 
 
@@ -61,6 +63,21 @@ public class ChangePassword extends Activity {
                 finish();
             }
 
+        });
+        btnLogout = (Button) findViewById(R.id.logout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+
+                UserFunctions logout = new UserFunctions();
+                logout.logoutUser(getApplicationContext());
+                SessionManager session = new SessionManager(getApplicationContext());
+                session.logoutUser();
+                Intent login = new Intent(getApplicationContext(), Main.class);
+                login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(login);
+                //finish();
+            }
         });
 
 

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -39,12 +40,10 @@ public class Main extends Activity {
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
 		SessionManager session = new SessionManager(getApplicationContext());
 		mTitle = mDrawerTitle = getTitle();
 
@@ -188,15 +187,17 @@ public class Main extends Activity {
 			fragment = new SharewithfriendsFragment();
 			break;
 		case 5:
-			fragment = new Login();
+			SessionManager session = new SessionManager(getApplicationContext());
+			if(!session.isLoggedIn()){
+				fragment = new Login();
+			}
+			else{
+				fragment = new UserPanel();
+			}
 			break;
 			
 		case 6:
-			SharedPreferences preferences = getSharedPreferences("Sporto", 0);
-			SharedPreferences.Editor editor = preferences.edit();
-			editor.clear(); 
-			editor.commit();
-			fragment = new Login();
+			fragment = new UserPanel();
 			break;
 
 		default:

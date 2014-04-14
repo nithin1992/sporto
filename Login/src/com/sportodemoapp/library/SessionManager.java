@@ -70,7 +70,7 @@ public class SessionManager {
         editor.clear();
         editor.commit();
          
-        // After logout redirect user to Login Activity
+        /*// After logout redirect user to Login Activity
         Intent i = new Intent(_context, Main.class);
         // Closing all the Activities
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -79,7 +79,7 @@ public class SessionManager {
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
          
         // Staring Login Activity
-        _context.startActivity(i);
+        _context.startActivity(i);*/
     }
      
    
