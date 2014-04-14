@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.ListView;
 
 import com.example.sporto.adapter.NavDrawerListAdapter;
 import com.example.sporto.model.NavDrawerItem;
+import com.sportodemoapp.library.SessionManager;
 
 public class Main extends Activity {
 	protected DrawerLayout mDrawerLayout;
@@ -43,7 +45,7 @@ public class Main extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-
+		SessionManager session = new SessionManager(getApplicationContext());
 		mTitle = mDrawerTitle = getTitle();
 
 		// load slide menu items
@@ -70,10 +72,13 @@ public class Main extends Activity {
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 		// Pages
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-		// What's hot, We  will add a counter here
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
-		
-
+		if(!session.isLoggedIn()){
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));	
+		}
+		else
+		{
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));		
+		}
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -183,10 +188,16 @@ public class Main extends Activity {
 			fragment = new SharewithfriendsFragment();
 			break;
 		case 5:
-			fragment = new AboutFragment();
+			fragment = new Login();
 			break;
-		
-
+			
+		case 6:
+			SharedPreferences preferences = getSharedPreferences("Sporto", 0);
+			SharedPreferences.Editor editor = preferences.edit();
+			editor.clear(); 
+			editor.commit();
+			fragment = new Login();
+			break;
 
 		default:
 			break;

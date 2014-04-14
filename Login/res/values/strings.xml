@@ -16,7 +16,8 @@
         <item>advertise with us</item>
         <item>rate this app</item>
         <item>share with friends</item>
-        <item>about</item>
+         <item>Sign Up/Log In</item>
+         <item>Logout</item>
     </string-array>
 
     <!-- Nav Drawer List Item Icons -->
