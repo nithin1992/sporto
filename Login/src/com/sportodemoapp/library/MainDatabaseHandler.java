@@ -1,5 +1,7 @@
 package com.sportodemoapp.library;
  
+import java.util.HashMap;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,7 +12,8 @@ import android.util.Log;
 
 public class MainDatabaseHandler {
  
-public static final String KEY_ROWID = "_id";
+    public static final String KEY_ROWID = "_id";
+    public static final String KEY_PRIMKEY = "PrimaryKey";
     public static final String KEY_NAME = "Name";
     public static final String KEY_TIMING = "Timing";
     public static final String KEY_LOCALITY = "Locality";
@@ -36,21 +39,22 @@ public static final String KEY_ROWID = "_id";
  private final Context mCtx;
  
  private static final String DATABASE_CREATE =
-  "CREATE TABLE if not exists " + searchResults + "("
-                + KEY_ROWID + " INTEGER PRIMARY KEY autoincrement,"
-                + KEY_NAME + " TEXT,"
-                + KEY_TIMING + " TEXT,"
-                + KEY_LOCALITY + " TEXT,"
-                + KEY_EDITOR + " TEXT,"
-                + KEY_WEBSITE + " TEXT,"
-                + KEY_CONTACT + " TEXT,"
-                + KEY_CONTACT1 + " TEXT,"
-                + KEY_LATITUDE + " TEXT,"
-                + KEY_LONGITUDE + " TEXT,"
-                + KEY_ADDRESS + " TEXT,"
-                + KEY_CATEGORY + " TEXT,"
-                + KEY_RATING + " FLOAT," 
-                + KEY_DISTANCE + " TEXT"+ ")";
+		 "CREATE TABLE " + searchResults + "("
+	                + KEY_ROWID + " INTEGER PRIMARY KEY autoincrement,"
+	                + KEY_PRIMKEY + " TEXT,"
+	                + KEY_NAME + " TEXT,"
+	                + KEY_TIMING + " TEXT,"
+	                + KEY_LOCALITY + " TEXT,"
+	                + KEY_EDITOR + " TEXT,"
+	                + KEY_WEBSITE + " TEXT,"
+	                + KEY_CONTACT + " TEXT,"
+	                + KEY_CONTACT1 + " TEXT,"
+	                + KEY_LATITUDE + " TEXT,"
+	                + KEY_LONGITUDE + " TEXT,"
+	                + KEY_ADDRESS + " TEXT,"
+	                + KEY_CATEGORY + " TEXT,"
+	                + KEY_RATING + " FLOAT," 
+	                + KEY_DISTANCE + " TEXT"+ ")";
  
  private static class DatabaseHelper extends SQLiteOpenHelper {
  
@@ -94,8 +98,9 @@ public static final String KEY_ROWID = "_id";
  
  
  
- public long addResults(String Name, String Timing, String Locality, String Editor, String Website, String Contact, String Contact1, Double Lat, Double Lon, String Address, String Category, String Rating, Double Distance) {
+ public long addResults(String PrimaryKey, String Name, String Timing, String Locality, String Editor, String Website, String Contact, String Contact1, Double Lat, Double Lon, String Address, String Category, String Rating, Double Distance) {
 	   ContentValues values = new ContentValues();
+	   values.put(KEY_PRIMKEY, PrimaryKey);
        values.put(KEY_NAME, Name);
        values.put(KEY_TIMING, Timing); 
        values.put(KEY_LOCALITY, Locality);
@@ -137,6 +142,28 @@ public static final String KEY_ROWID = "_id";
    mCursor.moveToFirst();
   }
   return mCursor;
+ }
+ 
+ public HashMap<String, String> getDetailedInfo(String compositeKey){
+     HashMap<String,String> detailedInfo = new HashMap<String,String>();
+     String selectQuery = "SELECT * FROM " + searchResults +" WHERE " + KEY_PRIMKEY + "='"+ compositeKey +"';";
+     Cursor cursor = mDb.rawQuery(selectQuery, null);
+      cursor.moveToFirst();
+         detailedInfo.put("name", cursor.getString(2));
+         detailedInfo.put("timing", cursor.getString(3));
+         detailedInfo.put("locality", cursor.getString(4));
+         detailedInfo.put("editor", cursor.getString(5));
+         detailedInfo.put("website", cursor.getString(6));
+         detailedInfo.put("contact", cursor.getString(7));
+			detailedInfo.put("contact1", cursor.getString(8));
+			detailedInfo.put("latitude", cursor.getString(9));
+			detailedInfo.put("longitude", cursor.getString(10));
+			detailedInfo.put("address", cursor.getString(11));
+			detailedInfo.put("category", cursor.getString(12));
+			detailedInfo.put("rating", cursor.getString(13));
+			detailedInfo.put("distance", cursor.getString(14));
+     cursor.close();
+     return detailedInfo;
  }
  
  public double distanceToDest(double lat1,double lon1, double lat2, double lon2) {

@@ -125,7 +125,8 @@ public class RestFulWebservice extends Fragment{
                         	JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
                             double distanceBetween = dbHelper.distanceToDest(deviceLatitude, deviceLongitude, jsonChildNode.getDouble(KEY_LATITUDE),jsonChildNode.getDouble(KEY_LONGITUDE));
                             distanceBetween = Math.round(distanceBetween*10.0)/10.0;
-                            dbHelper.addResults(jsonChildNode.getString(KEY_NAME),jsonChildNode.getString(KEY_TIMING),jsonChildNode.getString(KEY_LOCALITY),jsonChildNode.getString(KEY_EDITOR),jsonChildNode.getString(KEY_WEBSITE),jsonChildNode.getString(KEY_CONTACT),jsonChildNode.getString(KEY_CONTACT1),jsonChildNode.getDouble(KEY_LATITUDE),jsonChildNode.getDouble(KEY_LONGITUDE),jsonChildNode.getString(KEY_ADDRESS),jsonChildNode.getString(KEY_CATEGORY),jsonChildNode.getString(KEY_RATING),distanceBetween);
+                            String compkey = jsonChildNode.getString(KEY_NAME).concat(jsonChildNode.getString(KEY_LOCALITY));
+                            dbHelper.addResults(compkey, jsonChildNode.getString(KEY_NAME),jsonChildNode.getString(KEY_TIMING),jsonChildNode.getString(KEY_LOCALITY),jsonChildNode.getString(KEY_EDITOR),jsonChildNode.getString(KEY_WEBSITE),jsonChildNode.getString(KEY_CONTACT),jsonChildNode.getString(KEY_CONTACT1),jsonChildNode.getDouble(KEY_LATITUDE),jsonChildNode.getDouble(KEY_LONGITUDE),jsonChildNode.getString(KEY_ADDRESS),jsonChildNode.getString(KEY_CATEGORY),jsonChildNode.getString(KEY_RATING),distanceBetween);
                             }
                         /**
                         *If JSON array details are stored in SQlite it launches the User Panel.

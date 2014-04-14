@@ -56,6 +56,11 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar" >
         </activity>
+                <activity
+            android:name="DetailedDescription"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light" >
+        </activity>
     </application>
     <!-- Allow to connect with internet and to know the current network state -->
     <uses-permission android:name="android.permission.INTERNET" />
