@@ -37,7 +37,9 @@
         android:paddingLeft="5dp"
         android:textColor="#ffffff"
         android:textColorHint="#000000"
-        android:textSize="23dp" >
+        android:textSize="23dp"
+        android:imeOptions="actionGo" 
+        android:inputType="text" >
 
         <requestFocus />
     </EditText>

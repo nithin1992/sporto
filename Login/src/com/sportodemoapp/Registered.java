@@ -54,7 +54,7 @@ public class Registered extends Activity {
         Button login = (Button) findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), Login.class);
+                Intent myIntent = new Intent(view.getContext(), Main.class);
                 startActivityForResult(myIntent, 0);
                 finish();
             }

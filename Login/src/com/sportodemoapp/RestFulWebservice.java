@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.view.KeyEvent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -13,8 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 import com.sportodemoapp.library.LocationTracker;
 import com.sportodemoapp.library.MainDatabaseHandler;
@@ -50,15 +54,28 @@ public class RestFulWebservice extends Fragment{
     public void onActivityCreated (Bundle savedInstanceState) {
     	super.onActivityCreated(savedInstanceState);
         dbHelper = new MainDatabaseHandler(getActivity());
+        EditText inputSearch = (EditText) getView().findViewById(R.id.serverText);
         final Button GetServerData = (Button) getView().findViewById(R.id.GetServerData);
-         
-        GetServerData.setOnClickListener(new OnClickListener() {
+         GetServerData.setOnClickListener(new OnClickListener() {
             
         	public void onClick(View view) {
         		getDeviceLocation();
         		new ProcessSearch().execute();
         	}
-        });    
+        });   
+         inputSearch.setOnEditorActionListener(new OnEditorActionListener() {
+             @Override
+             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                 boolean handled = false;
+                 if (actionId == EditorInfo.IME_ACTION_GO) {
+             		getDeviceLocation();
+            		new ProcessSearch().execute();
+                     handled = true;
+                 }
+                 return handled;
+             }
+         });
+         
          
     }
     

@@ -146,7 +146,7 @@ public class Login extends Fragment {
 
 
 
-        	/*ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        	ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo netInfo = cm.getActiveNetworkInfo();
             if (netInfo != null && netInfo.isConnected()) {
                 try {
@@ -167,8 +167,7 @@ public class Login extends Fragment {
             }
             return false;
 
-        */return true;}
-        @Override
+        }        @Override
         protected void onPostExecute(Boolean th){
 
             if(th == true){

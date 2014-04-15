@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -26,9 +27,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sportodemoapp.library.DatabaseHandler;
+import com.sportodemoapp.library.SessionManager;
 import com.sportodemoapp.library.UserFunctions;
 
-public class Register extends Main {
+public class Register extends Activity {
 
 
     /**
@@ -64,10 +66,7 @@ public class Register extends Main {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LayoutInflater inflater = (LayoutInflater) this
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View contentView = inflater.inflate(R.layout.register, null, false);
-        mDrawerLayout.addView(contentView, 0); 
+        setContentView(R.layout.register);
 
     /**
      * Defining all layout items
@@ -240,6 +239,8 @@ public class Register extends Main {
                             pDialog.setMessage("Loading Info");
 
                             registerErrorMsg.setText("Successfully Registered");
+                            Toast.makeText(getApplicationContext(),
+                                    "Successfully Registered and Logged In", Toast.LENGTH_SHORT).show();
 
 
                             DatabaseHandler db = new DatabaseHandler(getApplicationContext());
@@ -252,22 +253,21 @@ public class Register extends Main {
                             UserFunctions logout = new UserFunctions();
                             logout.logoutUser(getApplicationContext());
                             db.addUser(json_user.getString(KEY_FIRSTNAME),json_user.getString(KEY_LASTNAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_USERNAME),json_user.getString(KEY_UID),json_user.getString(KEY_CREATED_AT));
+                            SessionManager sessionEntry = new SessionManager(getApplicationContext());
+                            sessionEntry.createLoginSession(json_user.getString(KEY_FIRSTNAME), json_user.getString(KEY_EMAIL));
                             /**
                              * Stores registered data in SQlite Database
                              * Launch Registered screen
                              **/
 
-                            Intent registered = new Intent(getApplicationContext(), Registered.class);
+                            Intent registered = new Intent(getApplicationContext(), Main.class);
 
                             /**
                              * Close all views before launching Registered screen
                             **/
                             registered.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            pDialog.dismiss();
                             startActivity(registered);
-
-
-                              finish();
+                            pDialog.dismiss();
                         }
 
                         else if (Integer.parseInt(red) ==2){
