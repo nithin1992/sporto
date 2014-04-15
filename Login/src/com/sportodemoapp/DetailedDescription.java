@@ -2,12 +2,12 @@ package com.sportodemoapp;
 
 import java.util.HashMap;
 
-import com.sportodemoapp.library.MainDatabaseHandler;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.sportodemoapp.library.MainDatabaseHandler;
 
 public class DetailedDescription extends Activity {
 	private MainDatabaseHandler dbHelper;
@@ -15,7 +15,7 @@ public class DetailedDescription extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
-		setContentView(R.layout.detailed_description);
+		setContentView(R.layout.fragment_info);
 		dbHelper = new MainDatabaseHandler(this);
 		dbHelper.open();
 	    Intent intent = getIntent();
