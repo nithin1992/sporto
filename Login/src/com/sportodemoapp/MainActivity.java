@@ -4,13 +4,14 @@ import sporto1.tabswipe.adapter.TabsPagerAdapter;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 public class MainActivity extends FragmentActivity implements
 ActionBar.TabListener 
 {
-
+private String compositeKey;
 private ViewPager viewPager;
 private TabsPagerAdapter mAdapter;
 private ActionBar actionBar;
@@ -24,10 +25,11 @@ super.onCreate(savedInstanceState);
 setContentView(R.layout.activity_main);
 
 // Initilization
+Intent intent = getIntent();
+compositeKey = intent.getStringExtra(AndroidListViewCursorAdaptorActivity.COMPOSITE_KEY);
 viewPager = (ViewPager) findViewById(R.id.pager);
 actionBar = getActionBar();
-mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
-
+mAdapter = new TabsPagerAdapter(getSupportFragmentManager(),compositeKey);
 viewPager.setAdapter(mAdapter);
 actionBar.setHomeButtonEnabled(false);
 actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);        

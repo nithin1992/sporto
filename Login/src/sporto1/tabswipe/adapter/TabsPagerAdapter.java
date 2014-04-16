@@ -1,4 +1,5 @@
 package sporto1.tabswipe.adapter;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -9,10 +10,12 @@ import com.sportodemoapp.MapFragment;
 import com.sportodemoapp.RatingFragment;
  
 public class TabsPagerAdapter extends FragmentPagerAdapter {
+	public String compositeKey;
  
-    public TabsPagerAdapter(FragmentManager fm) {
-        super(fm);
-    }
+    public TabsPagerAdapter(FragmentManager fm, String compositekey) {
+    	super(fm);
+    	compositeKey = compositekey;
+            }
  
     @Override
     public Fragment getItem(int index) {
@@ -20,7 +23,11 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         switch (index) {
         case 0:
             // Info fragment activity
-            return new InfoFragment();
+			Bundle data = new Bundle();
+			data.putString("compositekey",compositeKey);
+			InfoFragment fragment = new InfoFragment();
+			fragment.setArguments(data);
+            return fragment;
         case 1:
             // Rating fragment activity
             return new RatingFragment();

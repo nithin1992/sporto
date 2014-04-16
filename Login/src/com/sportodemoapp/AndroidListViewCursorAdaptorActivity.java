@@ -2,6 +2,7 @@ package com.sportodemoapp;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Build;
@@ -11,8 +12,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
-
 import com.sportodemoapp.library.MainDatabaseHandler;
 
 //import android.view.View;
@@ -70,7 +69,7 @@ public class AndroidListViewCursorAdaptorActivity extends Activity {
 					int position, long id) {
 				Cursor cursor = (Cursor)listView.getItemAtPosition(position);
 				String compositeKey = cursor.getString(cursor.getColumnIndexOrThrow("Name")).concat(cursor.getString(cursor.getColumnIndexOrThrow("Locality")));
-				Intent intent = new Intent(getApplicationContext(), DetailedDescription.class);
+				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 			    intent.putExtra(COMPOSITE_KEY, compositeKey);
 			    startActivity(intent);
 			}
