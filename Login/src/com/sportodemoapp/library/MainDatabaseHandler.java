@@ -28,12 +28,14 @@ public class MainDatabaseHandler {
     public static final String KEY_RATING = "Rating";
     public static final String KEY_DISTANCE = "Distance";
  
+ 
  private static final String TAG = "MainDatabaseHandler";
  private DatabaseHelper mDbHelper;
  private SQLiteDatabase mDb;
  
  private static final String DATABASE_NAME = "results";
  private static final String searchResults = "search_results";
+ private static final String fatResults = "fat_results";
  private static final int DATABASE_VERSION = 1;
  
  private final Context mCtx;
@@ -56,7 +58,9 @@ public class MainDatabaseHandler {
 	                + KEY_RATING + " FLOAT," 
 	                + KEY_DISTANCE + " TEXT"+ ")";
  
- private static class DatabaseHelper extends SQLiteOpenHelper {
+ 
+ 
+ public static class DatabaseHelper extends SQLiteOpenHelper {
  
   DatabaseHelper(Context context) {
    super(context, DATABASE_NAME, null, DATABASE_VERSION);

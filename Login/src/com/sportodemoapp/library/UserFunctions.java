@@ -20,6 +20,8 @@ public class UserFunctions {
     private static String forpassURL = "http://betaenggindustries.com/sporto_api/";
     private static String chgpassURL = "http://betaenggindustries.com/sporto_api/";
     private static String searchURL = "http://betaenggindustries.com/sporto_api/";
+    private static String insertFatURL = "http://betaenggindustries.com/sporto_api/";
+    private static String searchFatURL = "http://betaenggindustries.com/sporto_api/";
 
 
     private static String login_tag = "login";
@@ -27,6 +29,8 @@ public class UserFunctions {
     private static String forpass_tag = "forpass";
     private static String chgpass_tag = "chgpass";
     private static String search_tag = "search";
+    private static String insertfat_tag = "insertFat";
+    private static String searchfat_tag = "searchFat";
 
 
     // constructor
@@ -119,6 +123,35 @@ public class UserFunctions {
         JSONObject json = jsonParser.getJSONFromUrl(searchURL, params);
         return json;
     }
+    
+    
+    public JSONObject insertfat(String userId,String placeId, String noOfPlayers, String game, String time, String date, String addText){
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", insertfat_tag));
+        params.add(new BasicNameValuePair("fat_userid", userId));
+        params.add(new BasicNameValuePair("fat_placeid", placeId));
+        params.add(new BasicNameValuePair("fat_noofplayers", noOfPlayers));
+        params.add(new BasicNameValuePair("fat_game", game));
+        params.add(new BasicNameValuePair("fat_time", time));
+        params.add(new BasicNameValuePair("fat_date", date));
+        params.add(new BasicNameValuePair("fat_addtext", addText));
+        JSONObject json = jsonParser.getJSONFromUrl(insertFatURL, params);
+        return json;
+    }
+    
+    public JSONObject searchfat(String placeId, String game, String date){
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", searchfat_tag));
+        params.add(new BasicNameValuePair("fat_placeid", placeId));
+        params.add(new BasicNameValuePair("fat_game", game));
+        params.add(new BasicNameValuePair("fat_date", date));
+        JSONObject json = jsonParser.getJSONFromUrl(searchFatURL, params);
+        return json;
+    }
+    
+    
     
 
 }
