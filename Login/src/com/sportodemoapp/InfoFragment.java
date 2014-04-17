@@ -1,6 +1,7 @@
 package com.sportodemoapp;
 
 import java.util.HashMap;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,7 +32,16 @@ public class InfoFragment extends Fragment {
 	}
 	
 	private void displayView(){
-		TextView sampleOutput = (TextView) getView().findViewById(R.id.sampleOutput);
+	
+		TextView Rname = (TextView) getView().findViewById(R.id.name);
+		TextView Rlocality = (TextView) getView().findViewById(R.id.locality);
+		TextView Raddress = (TextView) getView().findViewById(R.id.address);
+		TextView Rrating = (TextView) getView().findViewById(R.id.rating);
+		TextView Rcontact = (TextView) getView().findViewById(R.id.contact);
+		TextView Rcontact1 = (TextView) getView().findViewById(R.id.contact1);
+		TextView Rcategory = (TextView) getView().findViewById(R.id.category);
+		TextView Rtimings = (TextView) getView().findViewById(R.id.timing);
+		TextView Rwebsite = (TextView) getView().findViewById(R.id.website);
 		HashMap<String,String> getDetailedInfo = new HashMap<String, String>();
 		getDetailedInfo = dbHelper.getDetailedInfo(compositeKey);
 		String name=getDetailedInfo.get("name");
@@ -48,21 +58,16 @@ public class InfoFragment extends Fragment {
 		String rating=getDetailedInfo.get("rating");
 		String distance=getDetailedInfo.get("distance");
 		String OutputData = "";
-		OutputData += " Name 		    : "+ name +" \n "
-	            + "Timing 		: "+ timing +" \n "
-	            + "Locality 				: "+ locality +" \n " 
-	            + "Editor's Note 		: "+ editor +" \n "
-	            + "Website 		: "+ website +" \n "
-	            + "Contact 		: "+ contact +" \n "
-	            + "Contact1 		: "+ contact1 +" \n "
-	            + "Latitude 		: "+ latitude +" \n "
-	            + "Longtitude 		: "+ longitude +" \n "
-	            + "Address 		: "+ address +" \n "
-	            + "Category 		: "+ category +" \n "
-	            + "Rating 		: "+ rating +" \n "
-	            + "Distance 		: "+ distance +" \n "
-	                        +"--------------------------------------------------\n";
-		sampleOutput.setText( OutputData );	
+
+		Rname.setText( name );
+		Rlocality.setText( locality );
+		Raddress.setText( address );
+		Rrating.setText( rating );
+		Rcontact.setText( contact );
+		Rcontact1.setText( contact1 );
+		Rcategory.setText( category );
+		Rtimings.setText( timing );
+		Rwebsite.setText( website );
 	}
 }
 	

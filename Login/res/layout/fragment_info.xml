@@ -1,26 +1,327 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fillViewport="true" >
+    android:orientation="vertical" >
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:text="Decathlon"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/locality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/name"
+        android:layout_alignBottom="@+id/name"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/name"
+        android:text="Locality"
+        android:textColor="#808080"
+        android:textSize="10dp"
+        android:typeface="serif" />
+
+    <View
+        android:id="@+id/myRectanglerating"
+        android:layout_width="35dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/name"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/rectanglerating" />
+
+    <TextView
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/name"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="0dp"
+        android:text="4.5"
+        android:textColor="#ffffff"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:id="@+id/addimage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/myRectanglerating"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/ic_action_place" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/myRectanglerating"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/addimage"
+        android:text="Near Park Plaza Hotel, Outer Ring Road, Munnekollaly Village, Marathahalli, Bangalore"
+        android:textColor="#808080"
+        android:textSize="10dp"
+        android:typeface="serif" />
+
+    <View
+        android:id="@+id/line"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        android:layout_height="0.5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/address"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#00bfff"
+        android:radius="5dp" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="20px"
-            android:text="Sample Description: "
-            android:textStyle="bold" />
+    <Button
+        android:id="@+id/contact"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/line"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/roundbuttoninfo"
+        android:drawableTop="@drawable/ic_action_phone"
+        android:paddingTop="2dp" />
 
-        <TextView
-            android:id="@+id/sampleOutput"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="16px" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/contact1"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/line"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/contact"
+        android:background="@drawable/roundbuttoninfo"
+        android:drawableTop="@drawable/ic_action_call"
+        android:paddingTop="2dp" />
 
-</ScrollView>
+    <Button
+        android:id="@+id/rating"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/line"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/contact1"
+        android:background="@drawable/roundbuttoninfo"
+        android:drawableTop="@drawable/ic_action_important" />
+
+    <Button
+        android:id="@+id/review"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/line"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/rating"
+        android:background="@drawable/roundbuttoninfo"
+        android:drawableTop="@drawable/ic_action_new_label" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/review"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:background="#00bfff"
+        android:radius="5dp" />
+
+    <ImageView
+        android:id="@+id/gameimage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/line2"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_action_gamepad" />
+
+    <TextView
+        android:id="@+id/games"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/gameimage"
+        android:text="Games"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameimage"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:text="football (500/hr)"
+        android:textColor="#808080"
+        android:textSize="10dp"
+        android:typeface="serif" />
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/category"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#00bfff"
+        android:radius="5dp" />
+
+    <ImageView
+        android:id="@+id/timeimage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/line3"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_action_time" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line3"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/timeimage"
+        android:text="Timings"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/timing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeimage"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:text="11:00 Am to 11:00 pm"
+        android:textColor="#808080"
+        android:textSize="10dp"
+        android:typeface="serif" />
+
+    <View
+        android:id="@+id/line4"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/timing"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#00bfff"
+        android:radius="5dp" />
+
+    <ImageView
+        android:id="@+id/mapimage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/line4"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_action_directions" />
+
+    <TextView
+        android:id="@+id/direction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line4"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/mapimage"
+        android:text="Direction"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <ImageView
+        android:id="@+id/map"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/mapimage"
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/ic_action_map" />
+
+    <View
+        android:id="@+id/line5"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/map"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#00bfff"
+        android:radius="5dp" />
+
+    <ImageView
+        android:id="@+id/websiteimage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/line5"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_action_computer" />
+
+    <TextView
+        android:id="@+id/Website"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line5"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/websiteimage"
+        android:text="Website"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/website"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/websiteimage"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:text="www.sportoindia.com"
+        android:textColor="#808080"
+        android:textSize="10dp"
+        android:typeface="serif" />
+
+    <View
+        android:id="@+id/line6"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/website"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#00bfff"
+        android:radius="5dp" />
+
+</RelativeLayout>

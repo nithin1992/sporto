@@ -13,6 +13,10 @@
         android:layout_marginTop="10dp"
         android:divider="#ececec"
         android:dividerHeight="8dp"
-        android:listSelector="@drawable/list_selector2" />
+        android:listSelector="@drawable/list_selector2"
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1.5" />
 
 </LinearLayout>
