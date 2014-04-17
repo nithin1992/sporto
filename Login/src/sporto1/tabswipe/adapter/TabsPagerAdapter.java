@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.sportodemoapp.FatFragment;
 import com.sportodemoapp.InfoFragment;
-import com.sportodemoapp.MapFragment;
 import com.sportodemoapp.RatingFragment;
  
 public class TabsPagerAdapter extends FragmentPagerAdapter {
@@ -34,9 +33,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         case 2:
             // fat fragment activity
             return new FatFragment();
-        case 3:
-            // map fragment activity
-            return new MapFragment();
+
         }
  
         return null;
@@ -45,7 +42,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // get item count - equal to number of tabs
-        return 4;
+        return 3;
     }
  
 }

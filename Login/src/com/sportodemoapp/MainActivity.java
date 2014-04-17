@@ -16,7 +16,7 @@ private ViewPager viewPager;
 private TabsPagerAdapter mAdapter;
 private ActionBar actionBar;
 // Tab titles
-private String[] tabs = { "Info", "Rating", "FAT", "Map" };
+private String[] tabs = { "Info", "Rating", "FAT" };
 
 @Override
 protected void onCreate(Bundle savedInstanceState) 
