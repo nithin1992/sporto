@@ -18,13 +18,16 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.TextView.OnEditorActionListener;
 
 import com.sportodemoapp.library.DatabaseHandler;
 import com.sportodemoapp.library.SessionManager;
@@ -43,7 +46,7 @@ public class Login extends Fragment {
      */
     private static String KEY_SUCCESS = "success";
     private static String KEY_UID = "uid";
-    private static String KEY_USERNAME = "uname";
+    private static String KEY_MOBILE = "mobile";
     private static String KEY_FIRSTNAME = "fname";
     private static String KEY_LASTNAME = "lname";
     private static String KEY_EMAIL = "email";
@@ -92,6 +95,38 @@ public class Login extends Fragment {
  * Login button click event
  * A Toast is set to alert when the Email and Password field is empty
  **/
+        
+        inputPassword.setOnEditorActionListener(new OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    if (  ( !inputEmail.getText().toString().equals("")) && ( !inputPassword.getText().toString().equals("")) )
+                    {
+                        NetAsync(getView());
+                    }
+                    else if ( ( !inputEmail.getText().toString().equals("")) )
+                    {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Password field empty", Toast.LENGTH_SHORT).show();
+                    }
+                    else if ( ( !inputPassword.getText().toString().equals("")) )
+                    {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Email field empty", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Email and Password field are empty", Toast.LENGTH_SHORT).show();
+                    }
+                    handled = true;
+                }
+                return handled;
+            }
+        });
+        
+        
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
@@ -231,10 +266,10 @@ public class Login extends Fragment {
                          * Clear all previous data in SQlite database.
                          **/
                         SessionManager sessionEntry = new SessionManager(getActivity().getApplicationContext());
-                        sessionEntry.createLoginSession(json_user.getString(KEY_FIRSTNAME), json_user.getString(KEY_EMAIL));
+                        sessionEntry.createLoginSession(json_user.getString(KEY_UID),json_user.getString(KEY_FIRSTNAME), json_user.getString(KEY_EMAIL));
                         UserFunctions logout = new UserFunctions();
                         logout.logoutUser(getActivity().getApplicationContext());
-                        db.addUser(json_user.getString(KEY_FIRSTNAME),json_user.getString(KEY_LASTNAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_USERNAME),json_user.getString(KEY_UID),json_user.getString(KEY_CREATED_AT));
+                        db.addUser(json_user.getString(KEY_FIRSTNAME),json_user.getString(KEY_LASTNAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_MOBILE),json_user.getString(KEY_UID),json_user.getString(KEY_CREATED_AT));
                        /**
                         *If JSON array details are stored in SQlite it launches the User Panel.
                         **/

@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+
 import com.sportodemoapp.library.MainDatabaseHandler;
 
 //import android.view.View;
@@ -26,13 +28,19 @@ public class AndroidListViewCursorAdaptorActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.resultslayout);
-
+		TextView emptySearch = (TextView) findViewById(R.id.emptySearch);
+		Bundle bundle = getIntent().getExtras();
+		Boolean flag = bundle.getBoolean("flag");
 		dbHelper = new MainDatabaseHandler(this);
 		dbHelper.open();
-
+		if(flag){
 		// Generate ListView from SQLite Database
 		displayListView();
-
+		}
+		else
+		{
+			emptySearch.setText("Sorry, we have no results for you!");			
+		}
 	}
 
 	private void displayListView() {

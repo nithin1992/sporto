@@ -19,12 +19,15 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.TextView.OnEditorActionListener;
 
 import com.sportodemoapp.library.DatabaseHandler;
 import com.sportodemoapp.library.SessionManager;
@@ -42,7 +45,7 @@ public class Register extends Activity {
     private static String KEY_UID = "uid";
     private static String KEY_FIRSTNAME = "fname";
     private static String KEY_LASTNAME = "lname";
-    private static String KEY_USERNAME = "uname";
+    private static String KEY_MOBILE = "mobile";
     private static String KEY_EMAIL = "email";
     private static String KEY_CREATED_AT = "created_at";
     private static String KEY_ERROR = "error";
@@ -53,7 +56,7 @@ public class Register extends Activity {
 
     EditText inputFirstName;
     EditText inputLastName;
-    EditText inputUsername;
+    EditText inputMobile;
     EditText inputEmail;
     EditText inputPassword;
     Button btnRegister;
@@ -73,7 +76,7 @@ public class Register extends Activity {
      **/
         inputFirstName = (EditText) findViewById(R.id.fname);
         inputLastName = (EditText) findViewById(R.id.lname);
-        inputUsername = (EditText) findViewById(R.id.uname);
+        inputMobile = (EditText) findViewById(R.id.mobileno);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.pword);
         btnRegister = (Button) findViewById(R.id.register);
@@ -94,21 +97,49 @@ public class Register extends Activity {
          * A Toast is set to alert when the fields are empty.
          * Another toast is set to alert Username must be 5 characters.
          **/
+        inputPassword.setOnEditorActionListener(new OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    if (  ( !inputMobile.getText().toString().equals("")) && ( !inputPassword.getText().toString().equals("")) && ( !inputFirstName.getText().toString().equals("")) && ( !inputLastName.getText().toString().equals("")) && ( !inputEmail.getText().toString().equals("")) )
+                    {
+                        if ( inputMobile.getText().toString().length() == 13  ){
+                        	 NetAsync(v);
 
+                        }
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(),
+                                    "Mobile Number should include +91", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "One or more fields are empty", Toast.LENGTH_SHORT).show();
+                    }
+                    handled = true;
+                }
+                return handled;
+            }
+        });
+        
+        
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (  ( !inputUsername.getText().toString().equals("")) && ( !inputPassword.getText().toString().equals("")) && ( !inputFirstName.getText().toString().equals("")) && ( !inputLastName.getText().toString().equals("")) && ( !inputEmail.getText().toString().equals("")) )
+                if (  ( !inputMobile.getText().toString().equals("")) && ( !inputPassword.getText().toString().equals("")) && ( !inputFirstName.getText().toString().equals("")) && ( !inputLastName.getText().toString().equals("")) && ( !inputEmail.getText().toString().equals("")) )
                 {
-                    if ( inputUsername.getText().toString().length() > 4 ){
+                    if ( inputMobile.getText().toString().length() == 13  ){
                     NetAsync(view);
 
                     }
                     else
                     {
                         Toast.makeText(getApplicationContext(),
-                                "Username should be minimum 5 characters", Toast.LENGTH_SHORT).show();
+                                "Mobile Number should include +91", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else
@@ -192,16 +223,16 @@ public class Register extends Activity {
  **/
         private ProgressDialog pDialog;
 
-        String email,password,fname,lname,uname;
+        String email,password,fname,lname,mobile;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            inputUsername = (EditText) findViewById(R.id.uname);
+            inputMobile = (EditText) findViewById(R.id.mobileno);
             inputPassword = (EditText) findViewById(R.id.pword);
                fname = inputFirstName.getText().toString();
                lname = inputLastName.getText().toString();
                 email = inputEmail.getText().toString();
-                uname= inputUsername.getText().toString();
+                mobile= inputMobile.getText().toString();
                 password = inputPassword.getText().toString();
             pDialog = new ProgressDialog(Register.this);
             pDialog.setTitle("Contacting Servers");
@@ -216,7 +247,7 @@ public class Register extends Activity {
 
 
         UserFunctions userFunction = new UserFunctions();
-        JSONObject json = userFunction.registerUser(fname, lname, email, uname, password);
+        JSONObject json = userFunction.registerUser(fname, lname, email, mobile, password);
 
             return json;
 
@@ -252,14 +283,14 @@ public class Register extends Activity {
 
                             UserFunctions logout = new UserFunctions();
                             logout.logoutUser(getApplicationContext());
-                            db.addUser(json_user.getString(KEY_FIRSTNAME),json_user.getString(KEY_LASTNAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_USERNAME),json_user.getString(KEY_UID),json_user.getString(KEY_CREATED_AT));
+                            db.addUser(json_user.getString(KEY_FIRSTNAME),json_user.getString(KEY_LASTNAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_MOBILE),json_user.getString(KEY_UID),json_user.getString(KEY_CREATED_AT));
                             SessionManager sessionEntry = new SessionManager(getApplicationContext());
-                            sessionEntry.createLoginSession(json_user.getString(KEY_FIRSTNAME), json_user.getString(KEY_EMAIL));
+                            sessionEntry.createLoginSession(json_user.getString(KEY_UID),json_user.getString(KEY_FIRSTNAME), json_user.getString(KEY_EMAIL));
                             /**
                              * Stores registered data in SQlite Database
                              * Launch Registered screen
                              **/
-
+                            pDialog.dismiss();
                             Intent registered = new Intent(getApplicationContext(), Main.class);
 
                             /**
@@ -267,7 +298,7 @@ public class Register extends Activity {
                             **/
                             registered.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(registered);
-                            pDialog.dismiss();
+                            
                         }
 
                         else if (Integer.parseInt(red) ==2){

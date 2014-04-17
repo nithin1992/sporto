@@ -11,11 +11,11 @@
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item>search</item>
-        <item>my favorite</item>
-        <item>advertise with us</item>
-        <item>rate this app</item>
-        <item>share with friends</item>
+        <item>Search</item>
+        <item>My Favorites</item>
+        <item>Advertise With Us</item>
+        <item>Rate This App</item>
+        <item>Share</item>
          <item>Sign Up/Log In</item>
          <item>User Panel</item>
     </string-array>

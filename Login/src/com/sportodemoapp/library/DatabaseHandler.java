@@ -32,7 +32,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_FIRSTNAME = "fname";
     private static final String KEY_LASTNAME = "lname";
     private static final String KEY_EMAIL = "email";
-    private static final String KEY_USERNAME = "uname";
+    private static final String KEY_MOBILE = "mobile";
     private static final String KEY_UID = "uid";
     private static final String KEY_CREATED_AT = "created_at";
 
@@ -48,7 +48,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_FIRSTNAME + " TEXT,"
                 + KEY_LASTNAME + " TEXT,"
                 + KEY_EMAIL + " TEXT UNIQUE,"
-                + KEY_USERNAME + " TEXT,"
+                + KEY_MOBILE + " TEXT,"
                 + KEY_UID + " TEXT,"
                 + KEY_CREATED_AT + " TEXT" + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
@@ -67,14 +67,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String fname, String lname, String email, String uname, String uid, String created_at) {
+    public void addUser(String fname, String lname, String email, String mobile, String uid, String created_at) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_FIRSTNAME, fname); // FirstName
         values.put(KEY_LASTNAME, lname); // LastName
         values.put(KEY_EMAIL, email); // Email
-        values.put(KEY_USERNAME, uname); // UserName
+        values.put(KEY_MOBILE, mobile); // UserName
         values.put(KEY_UID, uid); // Email
         values.put(KEY_CREATED_AT, created_at); // Created At
 
@@ -99,7 +99,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             user.put("fname", cursor.getString(1));
             user.put("lname", cursor.getString(2));
             user.put("email", cursor.getString(3));
-            user.put("uname", cursor.getString(4));
+            user.put("mobile", cursor.getString(4));
             user.put("uid", cursor.getString(5));
             user.put("created_at", cursor.getString(6));
         }
