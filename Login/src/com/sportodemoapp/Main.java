@@ -21,6 +21,7 @@ import android.widget.ListView;
 
 import com.example.sporto.adapter.NavDrawerListAdapter;
 import com.example.sporto.model.NavDrawerItem;
+import com.sportodemoapp.library.RateApp;
 import com.sportodemoapp.library.SessionManager;
 
 public class Main extends Activity {
@@ -118,6 +119,17 @@ public class Main extends Activity {
 		}
 	}
 
+	@Override
+	protected void onStart() {
+	    super.onStart();
+
+	    // Monitor launch times and interval from installation
+	    RateApp.onStart(this);
+	    // If the criteria is satisfied, "Rate this app" dialog will be shown
+	    RateApp.showRateDialogIfNeeded(this);
+	}
+	
+	
 	/**
 	 * Slide menu item click listener
 	 * */
