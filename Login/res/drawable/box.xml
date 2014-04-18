@@ -3,10 +3,8 @@
     android:padding="10dp"
     android:shape="rectangle" >
 
-    <solid android:color="#F8f8ff" /><corners android:radius="5dp" />
+    <solid android:color="#663b5998" />
 
-    <stroke
-        android:width="2dip"
-        android:color="#00bfff" />
+    <corners android:radius="5dp" />
 
 </shape>

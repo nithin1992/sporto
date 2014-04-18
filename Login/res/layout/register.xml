@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/android1"
+    android:background="@drawable/background"
     android:orientation="vertical" >
 
     <TextView
@@ -43,11 +43,11 @@
         android:layout_marginTop="210dp"
         android:background="@drawable/edit_text_design"
         android:hint="First Name"
+        android:imeOptions="actionNext"
         android:paddingLeft="5dp"
-        android:textColor="#000000"
-        android:textSize="15dp"
         android:singleLine="true"
-        android:imeOptions="actionNext" />
+        android:textColor="#000000"
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/lname"
@@ -57,11 +57,11 @@
         android:layout_marginTop="250dp"
         android:background="@drawable/edit_text_design"
         android:hint="Last Name"
+        android:imeOptions="actionNext"
         android:paddingLeft="5dp"
-        android:textColor="#000000"
-        android:textSize="15dp"
         android:singleLine="true"
-        android:imeOptions="actionNext" />
+        android:textColor="#000000"
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/email"
@@ -72,11 +72,11 @@
         android:background="@drawable/edit_text_design"
         android:ems="10"
         android:hint="E-mail"
+        android:imeOptions="actionNext"
         android:inputType="textEmailAddress"
         android:paddingLeft="5dp"
         android:textColor="#000000"
-        android:textSize="15dp" 
-        android:imeOptions="actionNext"/>
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/mobileno"
@@ -86,11 +86,11 @@
         android:layout_marginTop="330dp"
         android:background="@drawable/edit_text_design"
         android:hint="Mobile No."
+        android:imeOptions="actionNext"
+        android:inputType="phone"
         android:paddingLeft="5dp"
         android:textColor="#000000"
-        android:textSize="15dp"
-        android:inputType="phone"
-        android:imeOptions="actionNext" />
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/pword"
@@ -101,11 +101,11 @@
         android:background="@drawable/edit_text_design"
         android:ems="10"
         android:hint="Password"
+        android:imeOptions="actionGo"
         android:inputType="textPassword"
         android:paddingLeft="5dp"
         android:textColor="#000000"
-        android:textSize="15dp"
-        android:imeOptions="actionGo" />
+        android:textSize="15dp" />
 
     <TextView
         android:id="@+id/register_error"
