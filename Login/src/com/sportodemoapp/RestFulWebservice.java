@@ -35,6 +35,7 @@ import com.sportodemoapp.library.MainDatabaseHandler;
 import com.sportodemoapp.library.UserFunctions;
 
 public class RestFulWebservice extends Fragment{
+	private static String KEY_PLACEID = "PlaceId";
 	private static String KEY_NAME = "Name";
     private static String KEY_TIMING = "Timing";
     private static String KEY_LOCALITY = "Locality";
@@ -229,7 +230,7 @@ public class RestFulWebservice extends Fragment{
                             double distanceBetween = dbHelper.distanceToDest(deviceLatitude, deviceLongitude, jsonChildNode.getDouble(KEY_LATITUDE),jsonChildNode.getDouble(KEY_LONGITUDE));
                             distanceBetween = Math.round(distanceBetween*10.0)/10.0;
                             String compkey = jsonChildNode.getString(KEY_NAME).concat(jsonChildNode.getString(KEY_LOCALITY));
-                            dbHelper.addResults(compkey, jsonChildNode.getString(KEY_NAME),jsonChildNode.getString(KEY_TIMING),jsonChildNode.getString(KEY_LOCALITY),jsonChildNode.getString(KEY_EDITOR),jsonChildNode.getString(KEY_WEBSITE),jsonChildNode.getString(KEY_CONTACT),jsonChildNode.getString(KEY_CONTACT1),jsonChildNode.getDouble(KEY_LATITUDE),jsonChildNode.getDouble(KEY_LONGITUDE),jsonChildNode.getString(KEY_ADDRESS),jsonChildNode.getString(KEY_CATEGORY),jsonChildNode.getString(KEY_RATING),distanceBetween);
+                            dbHelper.addResults(compkey,jsonChildNode.getString(KEY_PLACEID), jsonChildNode.getString(KEY_NAME),jsonChildNode.getString(KEY_TIMING),jsonChildNode.getString(KEY_LOCALITY),jsonChildNode.getString(KEY_EDITOR),jsonChildNode.getString(KEY_WEBSITE),jsonChildNode.getString(KEY_CONTACT),jsonChildNode.getString(KEY_CONTACT1),jsonChildNode.getDouble(KEY_LATITUDE),jsonChildNode.getDouble(KEY_LONGITUDE),jsonChildNode.getString(KEY_ADDRESS),jsonChildNode.getString(KEY_CATEGORY),jsonChildNode.getString(KEY_RATING),distanceBetween);
                             }
                         /**
                         *If JSON array details are stored in SQlite it launches the User Panel.

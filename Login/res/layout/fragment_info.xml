@@ -110,7 +110,7 @@
         android:paddingTop="2dp" />
 
     <Button
-        android:id="@+id/rating"
+        android:id="@+id/rating1"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_below="@+id/line"
@@ -127,7 +127,7 @@
         android:layout_below="@+id/line"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/rating"
+        android:layout_toRightOf="@+id/rating1"
         android:background="@drawable/roundbuttoninfo"
         android:drawableTop="@drawable/ic_action_new_label" />
 

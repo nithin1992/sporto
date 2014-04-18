@@ -109,11 +109,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return user;
     }
 
-
-
-
-
-
     /**
      * Getting user login status
      * return true if rows are there in table
@@ -141,5 +136,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.delete(TABLE_LOGIN, null, null);
         db.close();
     }
+    
+    public String getUserId() {
+   	 String selectQuery = "SELECT "+KEY_UID+" FROM " + TABLE_LOGIN +";";
+   	SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        cursor.moveToFirst();
+        String uid = cursor.getString(cursor.getColumnIndex(KEY_UID));
+   	  return uid;
+   	 } 
 
 }

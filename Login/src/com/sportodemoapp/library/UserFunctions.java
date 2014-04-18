@@ -22,7 +22,8 @@ public class UserFunctions {
     private static String searchURL = "http://betaenggindustries.com/sporto_api/";
     private static String insertFatURL = "http://betaenggindustries.com/sporto_api/";
     private static String searchFatURL = "http://betaenggindustries.com/sporto_api/";
-
+    private static String insertRatingURl = "http://betaenggindustries.com/sporto_api/";
+    private static String fetchReviewURL = "http://betaenggindustries.com/sporto_api/";
 
     private static String login_tag = "login";
     private static String register_tag = "register";
@@ -31,8 +32,9 @@ public class UserFunctions {
     private static String search_tag = "search";
     private static String insertfat_tag = "insertFat";
     private static String searchfat_tag = "searchFat";
-
-
+    private static String insertrating_tag = "insertRating";
+    private static String fetchreview_tag = "fetchReview";
+    
     // constructor
     public UserFunctions(){
         jsonParser = new JSONParser();
@@ -81,10 +83,6 @@ public class UserFunctions {
         JSONObject json = jsonParser.getJSONFromUrl(forpassURL, params);
         return json;
     }
-
-
-
-
 
 
      /**
@@ -152,7 +150,27 @@ public class UserFunctions {
     }
     
     
+    public JSONObject insertrating(String uid,String placeid, String rating, String review){
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", insertrating_tag));
+        params.add(new BasicNameValuePair("uid", uid));
+        params.add(new BasicNameValuePair("placeid", placeid));
+        params.add(new BasicNameValuePair("rating", rating));
+        params.add(new BasicNameValuePair("review", review));
+        JSONObject json = jsonParser.getJSONFromUrl(insertRatingURl, params);
+        return json;
+    }
     
-
+    public JSONObject fetchreview(String placeid){
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", fetchreview_tag));
+        params.add(new BasicNameValuePair("placeid", placeid));
+        JSONObject json = jsonParser.getJSONFromUrl(fetchReviewURL, params);
+        return json;
+    }
+    
+    
 }
 

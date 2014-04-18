@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,9 +51,8 @@ public class ChangePassword extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.changepassword);
-
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         cancel = (Button) findViewById(R.id.btcancel);
         cancel.setOnClickListener(new View.OnClickListener(){
         public void onClick(View arg0){
@@ -92,6 +92,18 @@ public class ChangePassword extends Activity {
                 NetAsync(view);
             }
         });}
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    
+
 
     private class NetCheck extends AsyncTask<String,String,Boolean>
     {

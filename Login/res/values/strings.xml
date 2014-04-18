@@ -39,5 +39,6 @@
     <string name="rta_dialog_ok">Rate now</string>
     <string name="rta_dialog_cancel">Remind later</string>
     <string name="rta_dialog_no">No, thanks</string>
+    <string name="ratingwelcomemsg">Review this place! If you\'ve already reviewed this place, we\'ll update your existing review</string>
 
 </resources>

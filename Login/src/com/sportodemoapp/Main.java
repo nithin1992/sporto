@@ -158,6 +158,7 @@ public class Main extends Activity {
 		// Handle action bar actions click
 		switch (item.getItemId()) {
 		case R.id.action_settings:
+			this.finish();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

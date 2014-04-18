@@ -1,5 +1,7 @@
 package com.sportodemoapp;
 
+
+
 import sporto1.tabswipe.adapter.TabsPagerAdapter;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -7,7 +9,9 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 public class MainActivity extends FragmentActivity implements
 ActionBar.TabListener 
 {
@@ -19,11 +23,10 @@ private ActionBar actionBar;
 private String[] tabs = { "Info", "Rating", "FAT" };
 
 @Override
-protected void onCreate(Bundle savedInstanceState) 
+public void onCreate(Bundle savedInstanceState) 
 {
 super.onCreate(savedInstanceState);
 setContentView(R.layout.activity_main);
-
 // Initilization
 Intent intent = getIntent();
 compositeKey = intent.getStringExtra(AndroidListViewCursorAdaptorActivity.COMPOSITE_KEY);
@@ -59,6 +62,7 @@ viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
     }
 });
 }
+
 @Override
 public void onTabReselected(Tab tab, FragmentTransaction ft) {
 }

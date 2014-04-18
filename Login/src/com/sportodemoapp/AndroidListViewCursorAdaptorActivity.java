@@ -2,18 +2,17 @@ package com.sportodemoapp;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-
 import com.sportodemoapp.library.MainDatabaseHandler;
 
 //import android.view.View;
@@ -28,6 +27,7 @@ public class AndroidListViewCursorAdaptorActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.resultslayout);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		TextView emptySearch = (TextView) findViewById(R.id.emptySearch);
 		Bundle bundle = getIntent().getExtras();
 		Boolean flag = bundle.getBoolean("flag");
@@ -42,6 +42,17 @@ public class AndroidListViewCursorAdaptorActivity extends Activity {
 			emptySearch.setText("Sorry, we have no results for you!");			
 		}
 	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    
 
 	private void displayListView() {
 

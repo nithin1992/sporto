@@ -11,8 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sportodemoapp.library.MainDatabaseHandler;
+import com.sportodemoapp.library.SessionManager;
 
 public class InfoFragment extends Fragment {
 	private MainDatabaseHandler dbHelper;
@@ -22,6 +24,7 @@ public class InfoFragment extends Fragment {
 	public String contact1;
 	public String latitude;
 	public String longitude;
+	public final static String COMPOSITE_KEY = "composite_key";
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         
@@ -53,6 +56,7 @@ public class InfoFragment extends Fragment {
 		Button Rbuttoncontact = (Button) getView().findViewById(R.id.contact);
 		Button Rbuttoncontact1 = (Button) getView().findViewById(R.id.contact1);
 		Button Rmapimage = (Button) getView().findViewById(R.id.mapimage);
+		Button Rbuttonrating = (Button) getView().findViewById(R.id.rating1);
 		HashMap<String,String> getDetailedInfo = new HashMap<String, String>();
 		getDetailedInfo = dbHelper.getDetailedInfo(compositeKey);
 		name=getDetailedInfo.get("name");
@@ -90,6 +94,21 @@ public class InfoFragment extends Fragment {
             	// Uri location = Uri.parse("geo:37.422219,-122.08364?z=14"); // z param is zoom level
             	Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
         		startActivity(mapIntent); 
+            }});
+		
+		Rbuttonrating.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View view) {
+        	SessionManager session = new SessionManager(getActivity().getApplicationContext());
+        	if(!session.isLoggedIn()){
+        		Toast.makeText(getActivity().getApplicationContext(),
+                        "This feature requires you to login/signup! Please do so and try again!", Toast.LENGTH_SHORT).show();
+        		
+        	}
+        	else{            	          
+			Intent intent = new Intent(getActivity(), Rating.class);
+		    intent.putExtra(COMPOSITE_KEY, compositeKey);
+		    startActivity(intent);
+        	}
             }});
 
 		Rname.setText( name );

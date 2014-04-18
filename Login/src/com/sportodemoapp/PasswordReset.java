@@ -17,6 +17,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,14 +42,9 @@ private static String KEY_ERROR = "error";
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-  
+        super.onCreate(savedInstanceState);  
         setContentView(R.layout.passwordreset);
-
-        
-        
-
-
+        getActionBar().setDisplayHomeAsUpEnabled(true);    
         email = (EditText) findViewById(R.id.forpas);
         alert = (TextView) findViewById(R.id.alert);
         resetpass = (Button) findViewById(R.id.respass);
@@ -65,6 +61,17 @@ private static String KEY_ERROR = "error";
 
         });}
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    
+    
     private class NetCheck extends AsyncTask<String,String,Boolean>
 
                 {

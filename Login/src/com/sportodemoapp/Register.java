@@ -9,10 +9,7 @@ import java.net.URL;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +18,7 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -29,7 +26,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.TextView.OnEditorActionListener;
-
 import com.sportodemoapp.library.DatabaseHandler;
 import com.sportodemoapp.library.SessionManager;
 import com.sportodemoapp.library.UserFunctions;
@@ -71,6 +67,7 @@ public class Register extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     /**
      * Defining all layout items
      **/
@@ -150,6 +147,18 @@ public class Register extends Activity {
             }
         });
        }
+    
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    
+    
     /**
      * Async Task to check whether internet connection is working
      **/
