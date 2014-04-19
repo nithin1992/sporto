@@ -29,7 +29,11 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
             return fragment;
         case 1:
             // Rating fragment activity
-            return new RatingFragment();
+			Bundle data1 = new Bundle();
+			data1.putString("compositekey",compositeKey);
+			RatingFragment fragment1 = new RatingFragment();
+			fragment1.setArguments(data1);
+            return fragment1;            
         case 2:
             // fat fragment activity
             return new FatFragment();

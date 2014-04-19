@@ -77,9 +77,8 @@ public class Rating extends Activity {
 	 
 	 @Override
      protected void onPostExecute(JSONObject json) {
-		 Toast.makeText(getApplicationContext(),
-                 "Values are:"+uid+placeid+ratingValueString+reviewValue, Toast.LENGTH_SHORT).show();
-		 Toast.makeText(getApplicationContext(),
+		
+		 		 Toast.makeText(getApplicationContext(),
                  "Success!", Toast.LENGTH_SHORT).show();
          }
 	 }
