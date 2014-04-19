@@ -24,16 +24,16 @@
         <activity
             android:name="Register"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Light">
-            </activity>
+            android:theme="@android:style/Theme.Holo.Light" >
+        </activity>
         <activity
             android:name="Registered"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
-            android:parentActivityName="com.sportodemoapp.Main" >
-                                <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.sportodemoapp.Main" />
+            android:parentActivityName="com.sportodemoapp.Main"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sportodemoapp.Main" />
         </activity>
         <activity
             android:name="Login"
@@ -43,12 +43,12 @@
         <activity
             android:name="PasswordReset"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+            android:theme="@android:style/Theme.Holo.Light" >
         </activity>
         <activity
             android:name="ChangePassword"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+            android:theme="@android:style/Theme.Holo.Light" >
         </activity>
         <activity
             android:name="RestFulWebservice"

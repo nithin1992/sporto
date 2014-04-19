@@ -1,5 +1,7 @@
 package com.sportodemoapp;
 
+import java.util.HashMap;
+
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.sportodemoapp.library.DatabaseHandler;
 import com.sportodemoapp.library.SessionManager;
 import com.sportodemoapp.library.UserFunctions;
-import com.sportodemoapp.library.DatabaseHandler;
-
-import java.util.HashMap;
 
 public class UserPanel extends Fragment {
     Button btnLogout;
@@ -77,9 +77,8 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
  * Sets user first name and last name in text view.
  **/
         final TextView login = (TextView) getView().findViewById(R.id.textwelcome);
-        login.setText("Welcome  "+user.get("fname"));
-        final TextView lname = (TextView) getView().findViewById(R.id.lname);
-        lname.setText(user.get("lname"));
+        login.setText(user.get("fname")+" "+user.get("lname"));
+
 
 
     }}

@@ -1,329 +1,389 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:fillViewport="true" >
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="5dp"
-        android:text="Decathlon"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:typeface="sans" />
-
-    <TextView
-        android:id="@+id/locality"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/name"
-        android:layout_alignBottom="@+id/name"
-        android:layout_marginLeft="15dp"
-        android:layout_toRightOf="@+id/name"
-        android:text="Locality"
-        android:textColor="#808080"
-        android:textSize="10dp"
-        android:typeface="serif" />
-
-    <View
-        android:id="@+id/myRectanglerating"
-        android:layout_width="35dp"
-        android:layout_height="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/name"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="1dp"
-        android:background="@drawable/rectanglerating" />
-
-    <TextView
-        android:id="@+id/rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/name"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="0dp"
-        android:text="4.5"
-        android:textColor="#ffffff"
-        android:textSize="15dp" />
-
-    <ImageView
-        android:id="@+id/addimage"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/myRectanglerating"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="3dp"
-        android:src="@drawable/ic_action_place" />
-
-    <TextView
-        android:id="@+id/address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/myRectanglerating"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="3dp"
-        android:layout_toRightOf="@+id/addimage"
-        android:text="Near Park Plaza Hotel, Outer Ring Road, Munnekollaly Village, Marathahalli, Bangalore"
-        android:textColor="#808080"
-        android:textSize="10dp"
-        android:typeface="serif" />
-
-    <View
-        android:id="@+id/line"
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/address"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:background="#00bfff"
-        android:radius="5dp" />
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/contact"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_below="@+id/line"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/roundbuttoninfo"
-        android:drawableTop="@drawable/ic_action_phone"
-        android:paddingTop="2dp" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Decathlon"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:typeface="sans" />
 
-    <Button
-        android:id="@+id/contact1"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_below="@+id/line"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/contact"
-        android:background="@drawable/roundbuttoninfo"
-        android:drawableTop="@drawable/ic_action_call"
-        android:paddingTop="2dp" />
+        <TextView
+            android:id="@+id/locality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/name"
+            android:layout_below="@+id/name"
+            android:text="Locality"
+            android:textColor="#808080"
+            android:textSize="15dp"
+            android:typeface="serif" />
 
-    <Button
-        android:id="@+id/rating1"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_below="@+id/line"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/contact1"
-        android:background="@drawable/roundbuttoninfo"
-        android:drawableTop="@drawable/ic_action_important" />
+        <View
+            android:id="@+id/myRectanglerating"
+            android:layout_width="35dp"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@+id/name"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/rectanglerating" />
 
-    <Button
-        android:id="@+id/review"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_below="@+id/line"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/rating1"
-        android:background="@drawable/roundbuttoninfo"
-        android:drawableTop="@drawable/ic_action_new_label" />
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/myRectanglerating"
+            android:layout_alignLeft="@+id/myRectanglerating"
+            android:layout_alignRight="@+id/myRectanglerating"
+            android:layout_alignTop="@+id/myRectanglerating"
+            android:paddingLeft="12dp"
+            android:paddingTop="2dp"
+            android:text="4.5"
+            android:textColor="#ffffff"
+            android:textSize="15dp" />
 
-    <View
-        android:id="@+id/line2"
-        android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/review"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        android:background="#00bfff"
-        android:radius="5dp" />
+        <View
+            android:id="@+id/line"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/locality"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:background="#00bfff"
+            android:radius="5dp" />
 
-    <ImageView
-        android:id="@+id/gameimage"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/line2"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/ic_action_gamepad" />
+        <Button
+            android:id="@+id/contact"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/line"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/contact1"
+            android:background="@drawable/roundbuttoninfo"
+            android:drawableTop="@drawable/ic_action_phone"
+            android:paddingTop="2dp" />
 
-    <TextView
-        android:id="@+id/games"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/line2"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@+id/gameimage"
-        android:text="Games"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:typeface="sans" />
+        <TextView
+            android:id="@+id/mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contact"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/call"
+            android:text="Mobile"
+            android:textSize="8dp" />
 
-    <TextView
-        android:id="@+id/category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/gameimage"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
-        android:text="football (500/hr)"
-        android:textColor="#808080"
-        android:textSize="10dp"
-        android:typeface="serif" />
+        <Button
+            android:id="@+id/contact1"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/line"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/rating1"
+            android:background="@drawable/roundbuttoninfo"
+            android:drawableTop="@drawable/ic_action_call"
+            android:paddingTop="2dp" />
 
-    <View
-        android:id="@+id/line3"
-        android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/category"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:background="#00bfff"
-        android:radius="5dp" />
+        <TextView
+            android:id="@+id/call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contact1"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/rate"
+            android:text="Call"
+            android:textSize="8dp" />
 
-    <ImageView
-        android:id="@+id/timeimage"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/line3"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/ic_action_time" />
+        <Button
+            android:id="@+id/rating1"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/line"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/roundbuttoninfo"
+            android:drawableTop="@drawable/ic_action_important" />
 
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/line3"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@+id/timeimage"
-        android:text="Timings"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:typeface="sans" />
+        <TextView
+            android:id="@+id/rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rating1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="Rate &amp;"
+            android:textSize="8dp" />
 
-    <TextView
-        android:id="@+id/timing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/timeimage"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
-        android:text="11:00 Am to 11:00 pm"
-        android:textColor="#808080"
-        android:textSize="10dp"
-        android:typeface="serif" />
+        <TextView
+            android:id="@+id/review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rate"
+            android:layout_centerHorizontal="true"
+            android:text="Review"
+            android:textSize="8dp" />
 
-    <View
-        android:id="@+id/line4"
-        android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/timing"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:background="#00bfff"
-        android:radius="5dp" />
+        <Button
+            android:id="@+id/addtofav"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/line"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/rating1"
+            android:background="@drawable/roundbuttoninfo"
+            android:drawableTop="@drawable/ic_action_favorite"
+            android:paddingTop="2dp" />
 
+        <TextView
+            android:id="@+id/addtofav1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addtofav"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/rate"
+            android:text="Add to fav"
+            android:textSize="8dp" />
 
-    
-    <Button
-        android:id="@+id/mapimage"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/line4"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/ic_action_directions" />
+        <Button
+            android:id="@+id/mapimage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/line"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/addtofav"
+            android:background="@drawable/roundbuttoninfo"
+            android:drawableTop="@drawable/ic_action_directions"
+            android:paddingTop="1dp" />
 
-    <TextView
-        android:id="@+id/direction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/line4"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@+id/mapimage"
-        android:text="Direction"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:typeface="sans" />
+        <TextView
+            android:id="@+id/direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mapimage"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/addtofav1"
+            android:text="Direction"
+            android:textSize="8dp" />
 
-    <ImageView
-        android:id="@+id/map"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/mapimage"
-        android:layout_marginLeft="30dp"
-        android:src="@drawable/ic_action_map" />
+        <View
+            android:id="@+id/line2"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/review"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="7dp"
+            android:background="#00bfff"
+            android:radius="5dp" />
 
-    <View
-        android:id="@+id/line5"
-        android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/map"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:background="#00bfff"
-        android:radius="5dp" />
+        <ImageView
+            android:id="@+id/addimage"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/line2"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_action_place" />
 
-    <ImageView
-        android:id="@+id/websiteimage"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/line5"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/ic_action_computer" />
+        <TextView
+            android:id="@+id/address1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line2"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/addimage"
+            android:text="Address"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:typeface="sans" />
 
-    <TextView
-        android:id="@+id/Website"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/line5"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@+id/websiteimage"
-        android:text="Website"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:typeface="sans" />
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addimage"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:text="Near Park Plaza Hotel, Outer Ring Road, Munnekollaly Village, Marathahalli, Bangalore"
+            android:textColor="#808080"
+            android:textSize="15dp"
+            android:typeface="serif" />
 
-    <TextView
-        android:id="@+id/website"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/websiteimage"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
-        android:text="www.sportoindia.com"
-        android:textColor="#808080"
-        android:textSize="10dp"
-        android:typeface="serif" />
+        <View
+            android:id="@+id/line3"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/address"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#00bfff"
+            android:radius="5dp" />
 
-    <View
-        android:id="@+id/line6"
-        android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/website"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:background="#00bfff"
-        android:radius="5dp" />
+        <ImageView
+            android:id="@+id/gameimage"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/line3"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_action_gamepad" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/games"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line3"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/gameimage"
+            android:text="Games"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gameimage"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:text="football (500/hr)"
+            android:textColor="#808080"
+            android:textSize="15dp"
+            android:typeface="serif" />
+
+        <View
+            android:id="@+id/line4"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/category"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#00bfff"
+            android:radius="5dp" />
+
+        <ImageView
+            android:id="@+id/timeimage"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/line4"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_action_time" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line4"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/timeimage"
+            android:text="Timings"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/timing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/timeimage"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:text="11:00 Am to 11:00 pm"
+            android:textColor="#808080"
+            android:textSize="15dp"
+            android:typeface="serif" />
+
+        <View
+            android:id="@+id/line5"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/timing"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#00bfff"
+            android:radius="5dp" />
+
+        <ImageView
+            android:id="@+id/websiteimage"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/line5"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_action_computer" />
+
+        <TextView
+            android:id="@+id/Website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line5"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/websiteimage"
+            android:text="Website"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/websiteimage"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:text="www.sportoindia.com"
+            android:textColor="#808080"
+            android:textSize="15dp"
+            android:typeface="serif" />
+
+        <View
+            android:id="@+id/line6"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/website"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#00bfff"
+            android:radius="5dp" />
+    </RelativeLayout>
+
+</ScrollView>

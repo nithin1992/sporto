@@ -18,10 +18,10 @@
     <color name="navy">#000080</color>
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
-    <color name="list_item_title">#fff</color>
-    <color name="list_background">#303030</color>
-    <color name="list_background_pressed">#992416</color>
-    <color name="list_divider">#272727</color>
+    <color name="list_item_title">#000000</color>
+    <color name="list_background">#ececec</color>
+    <color name="list_background_pressed">#00bfff</color>
+    <color name="list_divider">#00bfff</color>
     <color name="counter_text_bg">#626262</color>
     <color name="counter_text_color">#c5c4c4</color>
 
