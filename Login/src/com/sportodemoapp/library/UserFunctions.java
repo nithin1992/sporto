@@ -24,6 +24,7 @@ public class UserFunctions {
     private static String searchFatURL = "http://betaenggindustries.com/sporto_api/";
     private static String insertRatingURl = "http://betaenggindustries.com/sporto_api/";
     private static String fetchReviewURL = "http://betaenggindustries.com/sporto_api/";
+    private static String verificationURL = "http://betaenggindustries.com/sporto_api/";
 
     private static String login_tag = "login";
     private static String register_tag = "register";
@@ -34,6 +35,7 @@ public class UserFunctions {
     private static String searchfat_tag = "searchFat";
     private static String insertrating_tag = "insertRating";
     private static String fetchreview_tag = "fetchReview";
+    private static String verification_tag = "isVerified";
     
     // constructor
     public UserFunctions(){
@@ -172,5 +174,14 @@ public class UserFunctions {
     }
     
     
+    public JSONObject verificationsend(String verificationcode){
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", verification_tag));
+        params.add(new BasicNameValuePair("verificationcode", verificationcode));
+        JSONObject json = jsonParser.getJSONFromUrl(verificationURL, params);
+        return json;
+    }
+ 
 }
 

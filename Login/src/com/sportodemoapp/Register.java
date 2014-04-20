@@ -57,6 +57,7 @@ public class Register extends Activity {
     EditText inputEmail;
     EditText inputPassword;
     Button btnRegister;
+    Button btnVerify;
     TextView registerErrorMsg;
 
 
@@ -77,9 +78,19 @@ public class Register extends Activity {
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.pword);
         btnRegister = (Button) findViewById(R.id.register);
+        btnVerify = (Button) findViewById(R.id.verifycode);
         registerErrorMsg = (TextView) findViewById(R.id.register_error);
 
-
+        
+        btnVerify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registered1 = new Intent(getApplicationContext(), VerifyUser.class);
+                startActivity(registered1);
+            	
+            	
+            }
+        });
 
 /**
  * Button which Switches back to the login screen on clicked
@@ -280,7 +291,7 @@ public class Register extends Activity {
 
                             registerErrorMsg.setText("Successfully Registered");
                             Toast.makeText(getApplicationContext(),
-                                    "Successfully Registered and Logged In", Toast.LENGTH_SHORT).show();
+                                    "Successfully Registered", Toast.LENGTH_SHORT).show();
 
 
                             DatabaseHandler db = new DatabaseHandler(getApplicationContext());
@@ -293,19 +304,18 @@ public class Register extends Activity {
                             UserFunctions logout = new UserFunctions();
                             logout.logoutUser(getApplicationContext());
                             db.addUser(json_user.getString(KEY_FIRSTNAME),json_user.getString(KEY_LASTNAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_MOBILE),json_user.getString(KEY_UID),json_user.getString(KEY_CREATED_AT));
-                            SessionManager sessionEntry = new SessionManager(getApplicationContext());
-                            sessionEntry.createLoginSession(json_user.getString(KEY_UID),json_user.getString(KEY_FIRSTNAME), json_user.getString(KEY_EMAIL));
-                            /**
+                                                        /**
                              * Stores registered data in SQlite Database
                              * Launch Registered screen
                              **/
                             pDialog.dismiss();
-                            Intent registered = new Intent(getApplicationContext(), Main.class);
-
+                            Intent registered = new Intent(getApplicationContext(), VerifyUser.class);
+                            registered.putExtra(KEY_UID, json_user.getString(KEY_UID));
+                            registered.putExtra(KEY_FIRSTNAME, json_user.getString(KEY_FIRSTNAME));
+                            registered.putExtra(KEY_EMAIL, json_user.getString(KEY_EMAIL));
                             /**
                              * Close all views before launching Registered screen
                             **/
-                            registered.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(registered);
                             
                         }
@@ -336,6 +346,7 @@ public class Register extends Activity {
             }}
         public void NetAsync(View view){
             new NetCheck().execute();
-        }}
+        }
+        }
 
 

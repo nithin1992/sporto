@@ -82,10 +82,6 @@ public class RatingFragment extends Fragment {
 	 @Override
      protected void onPostExecute(JSONObject json) {
 		 TextView emptyFetch = (TextView) getView().findViewById(R.id.emptySearch);
-		 Toast.makeText(getActivity().getApplicationContext(),
-                 "Values are:"+placeid, Toast.LENGTH_SHORT).show();
-		 Toast.makeText(getActivity().getApplicationContext(),
-                 "Success!", Toast.LENGTH_SHORT).show();
 		 try {
 		 JSONArray jsonMainNode = json.optJSONArray("reviews");
          int lengthJsonArr = jsonMainNode.length();  

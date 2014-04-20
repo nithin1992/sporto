@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/sporto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:text="SPORTO"
+        android:textColor="#3b5998"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sporto"
+        android:layout_centerHorizontal="true"
+        android:text="Sporting up your Lives!"
+        android:textColor="#000000"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:text="Enter the verification code sent to your mail."
+        android:textColor="#3b5998"
+        android:textSize="17dp" />
+
+    <EditText
+        android:id="@+id/verificationcodetext"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/textView"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/box"
+        android:hint="Enter the verification code"
+        android:paddingLeft="5dp"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/alert"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/respass"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/verificationcodebutton"
+        android:layout_width="130dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/verificationcodetext"
+        android:layout_below="@+id/verificationcodetext"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button"
+        android:text="Verify"
+        android:textColor="#000000"
+        android:textSize="13dp" />
+
+</RelativeLayout>
