@@ -2,15 +2,160 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ececec"
     android:orientation="vertical" >
 
     <TextView
-        android:layout_width="fill_parent"
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="Thamees "
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="I wanna play at"
+        android:textColor="#3b5998"
         android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/play"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/box"
+        android:ems="10"
+        android:hint="Date"
+        android:imeOptions="actionNext"
+        android:inputType="date"
+        android:paddingLeft="5dp"
+        android:textSize="15dp" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/date"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/box"
+        android:ems="10"
+        android:hint="Time"
+        android:imeOptions="actionNext"
+        android:inputType="time"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:textSize="15dp" />
+
+    <AutoCompleteTextView
+        android:id="@+id/place"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/time"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/box"
+        android:ems="10"
+        android:hint="Place"
+        android:imeOptions="actionNext"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textSize="15dp" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/game"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/place"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/box"
+        android:ems="10"
+        android:hint="Game"
+        android:imeOptions="actionNext"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/number"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/game"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/box"
+        android:ems="10"
+        android:hint="Number of players"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textSize="15dp" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/number"
+        android:layout_below="@+id/number"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/button"
+        android:paddingLeft="10dp"
+        android:text="submit"
+        android:textColor="#000000"
+        android:textSize="13dp" />
+
+    <Button
+        android:id="@+id/fat"
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/number"
+        android:layout_below="@+id/number"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/button"
+        android:paddingRight="23dp"
+        android:text="find a team?"
+        android:textColor="#000000"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/fat"
+        android:layout_alignBottom="@+id/fat"
+        android:layout_centerHorizontal="true"
+        android:text="OR"
+        android:textSize="15dp" />
+
+    <View
+        android:id="@+id/orbox"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_alignTop="@+id/submit"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/orbox" />
+
+    <TextView
+        android:id="@+id/or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/fat"
+        android:layout_alignBottom="@+id/fat"
+        android:layout_centerHorizontal="true"
+        android:text="OR"
+        android:textSize="15dp" />
 
 </RelativeLayout>
