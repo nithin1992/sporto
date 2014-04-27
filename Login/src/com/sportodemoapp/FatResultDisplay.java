@@ -2,14 +2,14 @@ package com.sportodemoapp;
 
 import org.json.JSONObject;
 
-import com.sportodemoapp.library.MainDatabaseHandler;
-import com.sportodemoapp.library.UserFunctions;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.sportodemoapp.library.MainDatabaseHandler;
+import com.sportodemoapp.library.UserFunctions;
 
 public class FatResultDisplay extends Activity{
 	public String compositeKey;
@@ -20,7 +20,7 @@ public class FatResultDisplay extends Activity{
 		setContentView(R.layout.fatlistview);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		Intent intent = getIntent();
-        compositeKey = intent.getStringExtra(FatFragment.COMPOSITE_KEY); 
+        //compositeKey = intent.getStringExtra(FatFragment.COMPOSITE_KEY); 
         dbHelper = new MainDatabaseHandler(this);
         displayListView();
 	}

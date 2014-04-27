@@ -9,55 +9,56 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/review_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <View
+        android:id="@+id/userbox"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/rectangle" />
+
+    <ImageView
+        android:id="@+id/person"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/userbox"
+        android:layout_alignLeft="@+id/userbox"
+        android:layout_alignRight="@+id/userbox"
+        android:layout_alignTop="@+id/userbox"
+        android:src="@drawable/ic_action_person" />
+
+    <TextView
+        android:id="@+id/review_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/person"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/person"
         android:text="Dog"
+        android:textColor="#000000"
         android:textSize="20dp" />
 
     <RatingBar
         android:id="@+id/review_ratingBar"
+        style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/review_name"
-        android:layout_alignParentRight="true"
-        android:scaleX="0.5"
-        android:scaleY="0.5" />
+        android:layout_alignLeft="@+id/review_name"
+        android:layout_below="@+id/userbox"
+        android:layout_marginTop="2dp" />
 
     <TextView
         android:id="@+id/review_review"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/review_name"
-        android:layout_below="@+id/review_name"
-        android:layout_marginTop="5dp"
+        android:layout_below="@+id/review_ratingBar"
+        android:layout_marginTop="2dp"
         android:text="Locality"
         android:textColor="#808080"
         android:textSize="15dp"
         android:typeface="serif" />
-
-    <View
-        android:id="@+id/line"
-        android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
-        android:layout_below="@+id/review_review"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:background="#00bfff"
-        android:radius="5dp" />
-
-    <RatingBar
-        android:id="@+id/ratingBar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/review_name"
-        android:layout_marginLeft="4dp"
-        android:layout_toRightOf="@+id/review_review" />
 
 </RelativeLayout>

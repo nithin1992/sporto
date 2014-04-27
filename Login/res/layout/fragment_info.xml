@@ -18,43 +18,28 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:text="Decathlon"
-            android:textSize="25dp"
-            android:textStyle="bold"
+            android:textColor="#00bfff"
+            android:textSize="20dp"
             android:typeface="sans" />
+
+        <RatingBar
+            android:id="@+id/star"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/name"
+            android:layout_below="@+id/name" />
 
         <TextView
             android:id="@+id/locality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/name"
-            android:layout_below="@+id/name"
+            android:layout_alignLeft="@+id/star"
+            android:layout_below="@+id/star"
             android:text="Locality"
             android:textColor="#808080"
             android:textSize="15dp"
             android:typeface="serif" />
-
-        <View
-            android:id="@+id/myRectanglerating"
-            android:layout_width="35dp"
-            android:layout_height="20dp"
-            android:layout_alignBottom="@+id/name"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/rectanglerating" />
-
-        <TextView
-            android:id="@+id/rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/myRectanglerating"
-            android:layout_alignLeft="@+id/myRectanglerating"
-            android:layout_alignRight="@+id/myRectanglerating"
-            android:layout_alignTop="@+id/myRectanglerating"
-            android:paddingLeft="12dp"
-            android:paddingTop="2dp"
-            android:text="4.5"
-            android:textColor="#ffffff"
-            android:textSize="15dp" />
 
         <View
             android:id="@+id/line"
@@ -85,10 +70,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/contact"
-            android:layout_marginRight="32dp"
+            android:layout_marginRight="31dp"
             android:layout_marginTop="5dp"
             android:layout_toLeftOf="@+id/call"
             android:text="Mobile"
+            android:textColor="#808080"
             android:textSize="8dp" />
 
         <Button
@@ -108,10 +94,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/contact1"
-            android:layout_marginRight="35dp"
+            android:layout_marginRight="32dp"
             android:layout_marginTop="5dp"
             android:layout_toLeftOf="@+id/rate"
             android:text="Call"
+            android:textColor="#808080"
             android:textSize="8dp" />
 
         <Button
@@ -132,6 +119,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:text="Rate &amp;"
+            android:textColor="#808080"
             android:textSize="8dp" />
 
         <TextView
@@ -141,6 +129,7 @@
             android:layout_below="@+id/rate"
             android:layout_centerHorizontal="true"
             android:text="Review"
+            android:textColor="#808080"
             android:textSize="8dp" />
 
         <Button
@@ -164,6 +153,7 @@
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/rate"
             android:text="Add to fav"
+            android:textColor="#808080"
             android:textSize="8dp" />
 
         <Button
@@ -183,10 +173,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/mapimage"
-            android:layout_marginLeft="17dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/addtofav1"
             android:text="Direction"
+            android:textColor="#808080"
             android:textSize="8dp" />
 
         <View
@@ -384,6 +375,55 @@
             android:layout_marginTop="5dp"
             android:background="#00bfff"
             android:radius="5dp" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="4.5"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:id="@+id/reviewimage"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignBottom="@+id/name"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_action_paste" />
+
+        <TextView
+            android:id="@+id/reviewno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/reviewimage"
+            android:layout_marginRight="5dp"
+            android:text="10 Reviews"
+            android:textColor="#808080"
+            android:textSize="5sp" />
+
+        <ImageView
+            android:id="@+id/ratingimage"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@+id/name"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/reviewimage"
+            android:src="@drawable/ic_action_good" />
+
+        <TextView
+            android:id="@+id/ratingno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ratingimage"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/reviewno"
+            android:text="100 Votes"
+            android:textColor="#808080"
+            android:textSize="5sp" />
     </RelativeLayout>
 
 </ScrollView>
