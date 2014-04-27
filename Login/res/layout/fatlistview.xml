@@ -4,19 +4,42 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ListView
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"  
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"  />
+    
+     <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+		android:layout_toRightOf="@+id/spinner1"
+		android:layout_alignBaseline="@+id/spinner1"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"  />
+
+     <Button
+         android:id="@+id/button1"
+         style="?android:attr/buttonStyleSmall"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+	android:layout_alignBaseline="@+id/spinner2"
+         android:layout_toRightOf="@+id/spinner2"
+         android:text="Button" />
+     
+     <ListView
         android:id="@+id/listView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="10dp"
-        android:divider="#ececec"
-        android:dividerHeight="8dp"
+		android:layout_below="@+id/button1"
+		android:layout_marginTop="5dp"
+        android:divider="#00bfff"
+        android:dividerHeight="1dp"
         android:listSelector="@drawable/list_selector2"
-        android:shadowColor="#000000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="1.5" />
+ />
 
 </RelativeLayout>
