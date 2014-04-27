@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/date"
-        android:text="Mobile No."
+        android:text="Time"
         android:textSize="20dp" />
 
     <TextView
