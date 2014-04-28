@@ -36,7 +36,11 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
             return fragment1;            
         case 2:
             // fat fragment activity
-            return new FatFragment();
+        	Bundle data2 = new Bundle();
+			data2.putString("compositekey",compositeKey);
+			FatFragment fragment2 = new FatFragment();
+			fragment2.setArguments(data2);
+            return fragment2;         
 
         }
  

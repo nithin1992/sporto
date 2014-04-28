@@ -19,6 +19,18 @@
         <item>Sign Up/Log In</item>
         <item>User Panel</item>
     </string-array>
+    
+    <string-array name="fatcategoryitems">
+        <item>Football</item>
+        <item>Cricket</item>
+        <item>Basketball</item>
+        <item>Badminton</item>
+    </string-array>
+    
+        <string-array name="fatdateitems">
+        <item>2014-04-26</item>
+        <item>2014-04-27</item>
+    </string-array>
 
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
