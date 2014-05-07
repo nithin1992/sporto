@@ -30,9 +30,10 @@
         android:imeOptions="actionNext"
         android:inputType="date"
         android:paddingLeft="5dp"
-        android:textSize="15dp" >
+        android:textSize="15dp"
+        android:focusable="false"
+         >
 
-        <requestFocus />
     </EditText>
 
     <EditText
@@ -49,8 +50,9 @@
         android:imeOptions="actionNext"
         android:inputType="time"
         android:paddingLeft="5dp"
-        android:singleLine="true"
-        android:textSize="15dp" />
+        android:textSize="15dp"
+        android:focusable="false"
+         />
 
     <AutoCompleteTextView
         android:id="@+id/game"

@@ -1,11 +1,15 @@
 package com.sportodemoapp;
 
+import java.util.Calendar;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,23 +17,28 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.sportodemoapp.FatFragment.SelectDateFragment;
 import com.sportodemoapp.library.DatabaseHandler;
 import com.sportodemoapp.library.FatDatabaseHandler;
 import com.sportodemoapp.library.MainDatabaseHandler;
 import com.sportodemoapp.library.UserFunctions;
 
-public class FatResultDisplay extends Activity{
+public class FatResultDisplay extends FragmentActivity{
 	private static String KEY_FIRSTNAME = "FirstName";
 	private static String KEY_LASTNAME = "LastName";
     private static String KEY_EMAIL = "Email";
@@ -44,7 +53,7 @@ public class FatResultDisplay extends Activity{
 	public String selectedCategory;
 	public String selectedDate;
 	Spinner spinner1;
-	Spinner spinner2;
+	EditText inputDate;
 	private SimpleCursorAdapter dataAdapter;
 	private MainDatabaseHandler dbHelper;
 	@Override
@@ -59,20 +68,24 @@ public class FatResultDisplay extends Activity{
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,R.array.fatcategoryitems, android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(adapter1);
-        spinner2 = (Spinner) findViewById(R.id.spinner2);
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,R.array.fatdateitems, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(adapter2);
+        inputDate = (EditText) findViewById(R.id.date);
+        inputDate.setClickable(true);
+        inputDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectDate(inputDate);
+            }
+        });
         Button button1 = (Button) findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
         public void onClick(View view) {
         	selectedCategory = String.valueOf(spinner1.getSelectedItem());
-        	selectedDate = String.valueOf(spinner2.getSelectedItem());
+        	selectedDate = inputDate.getText().toString();        	
         	startFetch();
         }});
 	}
-	
-	
+
+
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -86,8 +99,8 @@ public class FatResultDisplay extends Activity{
 	private void startFetch(){
 		new FatFetch().execute();	
 	}
-	
-	
+
+
 	private class FatFetch extends AsyncTask<String, String, JSONObject> {
 		String placeid;
 		 private ProgressDialog pDialog;
@@ -101,16 +114,16 @@ public class FatResultDisplay extends Activity{
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
-			
+
 	}
-		
+
 		 @Override
 	     protected JSONObject doInBackground(String... args) {
 			 UserFunctions userFunction = new UserFunctions();
 			 JSONObject json = userFunction.searchfat(placeid, selectedCategory, selectedDate);
 	         return json;
 	     }
-		 
+
 		 @SuppressWarnings("deprecation")
 		@Override
 	     protected void onPostExecute(JSONObject json) {
@@ -161,11 +174,11 @@ public class FatResultDisplay extends Activity{
 			 catch (JSONException e) {
 	                e.printStackTrace();
 	            }
-			 
+
 	}
-	
+
 	}
-	
+
 
 	private void displayListView() {
 		 FatDatabaseHandler fDb = new FatDatabaseHandler(getApplicationContext());
@@ -206,5 +219,41 @@ public class FatResultDisplay extends Activity{
 
 
 	}
-}
+	
+	public void selectDate(View view) {
+    	DialogFragment newFragment = new SelectDateFragment();
+    	newFragment.show(getSupportFragmentManager(), "Date Picker");
+    	}
+    	public void populateSetDate(int year, String month, String day) {  
+    	inputDate.setText(year+"-"+month+"-"+day);
+    	}
+    	public class SelectDateFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+    		@Override
+    	public Dialog onCreateDialog(Bundle savedInstanceState) {
+    	final Calendar calendar = Calendar.getInstance();
+    	int yy = calendar.get(Calendar.YEAR);
+    	int mm = calendar.get(Calendar.MONTH);
+    	int dd = calendar.get(Calendar.DAY_OF_MONTH);
+    	
+    	return new DatePickerDialog(getActivity(), this, yy, mm, dd);
+    	}
+    	 
+    	public void onDateSet(DatePicker view, int yy, int mm, int dd) {
+    		int month = mm + 1;
+    	    String formattedMonth = "" + month;
+    	    String formattedDayOfMonth = "" + dd;
 
+    	    if(month < 10){
+
+    	        formattedMonth = "0" + month;
+    	    }
+    	    if(dd < 10){
+
+    	        formattedDayOfMonth = "0" + dd;
+    	    }
+    	populateSetDate(yy, formattedMonth, formattedDayOfMonth);
+    	}
+    	}
+
+	
+}

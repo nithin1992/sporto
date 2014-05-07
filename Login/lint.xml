@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="ValidFragment">
+        <ignore path="src/com/sportodemoapp/FatFragment.java" />
+        <ignore path="src/com/sportodemoapp/FatResultDisplay.java" />
+    </issue>
+</lint>

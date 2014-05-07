@@ -26,6 +26,7 @@ public class InfoFragment extends Fragment {
 	public String contact1;
 	public String latitude;
 	public String longitude;
+	TextView Rwebsite;
 	public final static String COMPOSITE_KEY = "composite_key";
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -54,7 +55,7 @@ public class InfoFragment extends Fragment {
 		TextView Rcontact1 = (TextView) getView().findViewById(R.id.contact1);
 		TextView Rcategory = (TextView) getView().findViewById(R.id.category);
 		TextView Rtimings = (TextView) getView().findViewById(R.id.timing);
-		TextView Rwebsite = (TextView) getView().findViewById(R.id.website);
+		Rwebsite =(TextView) getView().findViewById(R.id.website);
 		Button Rbuttoncontact = (Button) getView().findViewById(R.id.contact);
 		Button Rbuttoncontact1 = (Button) getView().findViewById(R.id.contact1);
 		Button Rmapimage = (Button) getView().findViewById(R.id.mapimage);
@@ -72,8 +73,9 @@ public class InfoFragment extends Fragment {
 		longitude=getDetailedInfo.get("longitude");
 		String address=getDetailedInfo.get("address");
 		String category=getDetailedInfo.get("category");
+		category = category.replace(';','\n');
 		String rating=getDetailedInfo.get("rating");
-		String distance=getDetailedInfo.get("distance");
+		//String distance=getDetailedInfo.get("distance");
 		
 		Rbuttoncontact.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -92,8 +94,6 @@ public class InfoFragment extends Fragment {
 		Rmapimage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
             	Uri location = Uri.parse("geo:0,0?q="+latitude+","+longitude+"("+name+")");
-            	// Or map point based on latitude/longitude
-            	// Uri location = Uri.parse("geo:37.422219,-122.08364?z=14"); // z param is zoom level
             	Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
         		startActivity(mapIntent); 
             }});
@@ -111,6 +111,14 @@ public class InfoFragment extends Fragment {
 		    intent.putExtra(COMPOSITE_KEY, compositeKey);
 		    startActivity(intent);
         	}
+            }});
+
+		Rwebsite.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+            	String url = "http://"+Rwebsite.getText().toString();
+            	Intent i = new Intent(Intent.ACTION_VIEW);
+            	i.setData(Uri.parse(url));
+            	startActivity(i);
             }});
 
         Rrating.setRating(Float.parseFloat(rating));
