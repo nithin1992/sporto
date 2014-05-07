@@ -3,10 +3,6 @@ package com.sportodemoapp;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.sportodemoapp.library.DatabaseHandler;
-import com.sportodemoapp.library.MainDatabaseHandler;
-import com.sportodemoapp.library.UserFunctions;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -18,7 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.RatingBar;
+
+import com.sportodemoapp.library.DatabaseHandler;
+import com.sportodemoapp.library.MainDatabaseHandler;
+import com.sportodemoapp.library.UserFunctions;
  
 public class FatFragment extends Fragment {
     private static String KEY_SUCCESS = "success";
@@ -53,7 +52,7 @@ public class FatFragment extends Fragment {
         inputTime = (EditText) getView().findViewById(R.id.time);
         inputGame = (EditText) getView().findViewById(R.id.game);
         inputNumberOfPlayers = (EditText) getView().findViewById(R.id.number);
-        inputAddText = (EditText) getView().findViewById(R.id.addtext);
+        inputAddText = (EditText) getView().findViewById(R.id.addinfo);
         btnFatRegister = (Button) getView().findViewById(R.id.submit1); 
         btnFatFetch = (Button) getView().findViewById(R.id.fat); 
         btnFatRegister.setOnClickListener(new View.OnClickListener() {

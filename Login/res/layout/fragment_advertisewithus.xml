@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
-        android:text="Can&apos;t find your Place? Add here"
+        android:text="Can&apos;t find your Place? Add here "
         android:textColor="#3b5998"
         android:textSize="20dp" />
 
