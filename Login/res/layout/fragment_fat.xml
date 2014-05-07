@@ -105,7 +105,7 @@
         android:textSize="15dp" />
 
     <Button
-        android:id="@+id/submit"
+        android:id="@+id/submit1"
         android:layout_width="160dp"
         android:layout_height="35dp"
         android:layout_alignRight="@+id/addtext"

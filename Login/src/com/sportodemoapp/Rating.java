@@ -53,6 +53,7 @@ public class Rating extends Activity {
     private class PostReview extends AsyncTask<String, String, JSONObject> {
 	String placeid,reviewValue,uid,ratingValueString;
 	Float ratingValue;
+	private ProgressDialog pDialog;
 	@Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -65,6 +66,11 @@ public class Rating extends Activity {
 		placeid = dbHelper.fetchLocationId(compositeKey);
 		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 		uid = db.getUserId();
+        pDialog = new ProgressDialog(Rating.this);
+        pDialog.setTitle("Posting Review");
+        pDialog.setIndeterminate(false);
+        pDialog.setCancelable(true);
+        pDialog.show();
 
 	}
 	
@@ -77,9 +83,10 @@ public class Rating extends Activity {
 	 
 	 @Override
      protected void onPostExecute(JSONObject json) {
-		
+         pDialog.dismiss();
 		 		 Toast.makeText(getApplicationContext(),
                  "Success!", Toast.LENGTH_SHORT).show();
+		 		finish();
          }
 	 }
 

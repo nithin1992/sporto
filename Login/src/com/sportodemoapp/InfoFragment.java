@@ -10,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sportodemoapp.library.MainDatabaseHandler;
+import com.sportodemoapp.library.ReviewDatabaseHandler;
 import com.sportodemoapp.library.SessionManager;
 
 public class InfoFragment extends Fragment {
@@ -47,7 +49,7 @@ public class InfoFragment extends Fragment {
 		TextView Rname = (TextView) getView().findViewById(R.id.name);
 		TextView Rlocality = (TextView) getView().findViewById(R.id.locality);
 		TextView Raddress = (TextView) getView().findViewById(R.id.address);
-		TextView Rrating = (TextView) getView().findViewById(R.id.rating);
+		RatingBar Rrating = (RatingBar) getView().findViewById(R.id.star);
 		TextView Rcontact = (TextView) getView().findViewById(R.id.contact);
 		TextView Rcontact1 = (TextView) getView().findViewById(R.id.contact1);
 		TextView Rcategory = (TextView) getView().findViewById(R.id.category);
@@ -111,10 +113,10 @@ public class InfoFragment extends Fragment {
         	}
             }});
 
+        Rrating.setRating(Float.parseFloat(rating));
 		Rname.setText( name );
 		Rlocality.setText( locality );
 		Raddress.setText( address );
-		Rrating.setText( rating );
 		Rcontact.setText( contact );
 		Rcontact1.setText( contact1 );
 		Rcategory.setText( category );

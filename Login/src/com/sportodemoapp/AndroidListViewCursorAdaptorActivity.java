@@ -13,7 +13,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
+import com.sportodemoapp.library.CustomCursorAdapter;
 import com.sportodemoapp.library.MainDatabaseHandler;
+import com.sportodemoapp.library.SearchResultsDisplay;
 
 //import android.view.View;
 
@@ -21,7 +24,8 @@ import com.sportodemoapp.library.MainDatabaseHandler;
 public class AndroidListViewCursorAdaptorActivity extends Activity {
 
 	private MainDatabaseHandler dbHelper;
-	private SimpleCursorAdapter dataAdapter;
+	//private SimpleCursorAdapter dataAdapter;
+	private SearchResultsDisplay customAdapter;
 	public final static String COMPOSITE_KEY = "composite_key";
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -56,31 +60,9 @@ public class AndroidListViewCursorAdaptorActivity extends Activity {
 
 	private void displayListView() {
 
-		Cursor cursor = dbHelper.fetchAllResults();
-
-		// The desired columns to be bound
-		String[] columns = new String[] {
-			    MainDatabaseHandler.KEY_NAME,
-			    MainDatabaseHandler.KEY_LOCALITY,
-			    MainDatabaseHandler.KEY_RATING,
-			    MainDatabaseHandler.KEY_DISTANCE };
-
-		// the XML defined views which the data will be bound to
-		int[] to = new int[] {
-				R.id.name,
-			    R.id.locality,  
-			    R.id.rating,
-			    R.id.distance, };
-
-		// create the adapter using the cursor pointing to the desired data
-		// as well as the layout information
-		dataAdapter = new SimpleCursorAdapter(this, R.layout.search_result,
-				cursor, columns, to, 0);
-
-		ListView listView = (ListView) findViewById(R.id.listView1);
-		// Assign adapter to ListView
-		listView.setAdapter(dataAdapter);
-
+    	ListView listView = (ListView) findViewById(R.id.listView1);
+    	customAdapter = new SearchResultsDisplay(AndroidListViewCursorAdaptorActivity.this, dbHelper.fetchAllResults());
+        listView.setAdapter(customAdapter);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override

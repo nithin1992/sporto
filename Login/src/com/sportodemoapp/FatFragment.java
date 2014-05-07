@@ -7,6 +7,7 @@ import com.sportodemoapp.library.DatabaseHandler;
 import com.sportodemoapp.library.MainDatabaseHandler;
 import com.sportodemoapp.library.UserFunctions;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -53,7 +54,7 @@ public class FatFragment extends Fragment {
         inputGame = (EditText) getView().findViewById(R.id.game);
         inputNumberOfPlayers = (EditText) getView().findViewById(R.id.number);
         inputAddText = (EditText) getView().findViewById(R.id.addtext);
-        btnFatRegister = (Button) getView().findViewById(R.id.submit); 
+        btnFatRegister = (Button) getView().findViewById(R.id.submit1); 
         btnFatFetch = (Button) getView().findViewById(R.id.fat); 
         btnFatRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -78,6 +79,7 @@ public class FatFragment extends Fragment {
     
     private class InsertFat extends AsyncTask<String, String, JSONObject> {
     	String placeid,uid;	
+    	 private ProgressDialog pDialog;
     	@Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -85,14 +87,18 @@ public class FatFragment extends Fragment {
     		placeid = mDbHelper.fetchLocationId(compositeKey);
     		DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
     		uid = db.getUserId();
-    		  Toast.makeText(getActivity().getApplicationContext(),
-    	                uid+placeid+inputDate.getText().toString()+inputTime.getText().toString()+inputGame.getText().toString()+inputNumberOfPlayers.getText().toString()+inputAddText.getText().toString(), Toast.LENGTH_LONG).show();
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setTitle("Updating");
+            pDialog.setMessage("Broadcasting your request!");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
     	}
     	
     	 @Override
          protected JSONObject doInBackground(String... args) {
     		 UserFunctions userFunction = new UserFunctions();
-             JSONObject json = userFunction.insertfat(uid, placeid, inputDate.getText().toString(), inputTime.getText().toString(), inputGame.getText().toString(), inputNumberOfPlayers.getText().toString(), inputAddText.getText().toString());
+             JSONObject json = userFunction.insertfat(uid, placeid, inputNumberOfPlayers.getText().toString(), inputGame.getText().toString(),inputTime.getText().toString(),inputDate.getText().toString(),inputAddText.getText().toString());
              return json;
          }
     	 
@@ -102,11 +108,13 @@ public class FatFragment extends Fragment {
     		 try {
     			 String res = json.getString(KEY_SUCCESS);
     			 if(Integer.parseInt(res) == 1) {
+    				 pDialog.dismiss();
     		 		 Toast.makeText(getActivity().getApplicationContext(),
                      "Success!", Toast.LENGTH_SHORT).show();
              }
                  else{
-                	 Toast.makeText(getActivity().getApplicationContext(),
+                	 pDialog.dismiss();
+                	 Toast.makeText(getActivity().getApplicationContext(),                			 
                              "Something went wrong!", Toast.LENGTH_SHORT).show();
                  }
                  

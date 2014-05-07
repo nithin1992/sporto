@@ -13,6 +13,7 @@ import com.sportodemoapp.library.MainDatabaseHandler;
 import com.sportodemoapp.library.ReviewDatabaseHandler;
 import com.sportodemoapp.library.UserFunctions;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
@@ -64,11 +65,17 @@ public class RatingFragment extends Fragment {
     
     private class FetchReview extends AsyncTask<String, String, JSONObject> {
 	String placeid;	
+	 private ProgressDialog pDialog;
 	@Override
     protected void onPreExecute() {
         super.onPreExecute();
         mDbHelper.open();
 		placeid = mDbHelper.fetchLocationId(compositeKey);
+		 pDialog = new ProgressDialog(getActivity());
+         pDialog.setTitle("Contacting Servers");
+         pDialog.setIndeterminate(false);
+         pDialog.setCancelable(true);
+         pDialog.show();
 
 	}
 	
@@ -107,10 +114,12 @@ public class RatingFragment extends Fragment {
          }if(flag){
      		// Generate ListView from SQLite Database
         	 DisplayListView();
+        	 pDialog.dismiss();
      		}
      		else
      		{
-     			emptyFetch.setText("Sorry, we have no results for you!");			
+     			emptyFetch.setText("No reviews yet! Be the first one to review this place!");			
+     			pDialog.dismiss();
      		}
          
          }
@@ -125,29 +134,7 @@ public class RatingFragment extends Fragment {
     	ListView listView = (ListView) getView().findViewById(R.id.reviewlistView);
     	customAdapter = new CustomCursorAdapter(getActivity(), rDbHelper.fetchAllResults());
         listView.setAdapter(customAdapter);
-    	
    
-		/* The desired columns to be bound
-		String[] columns = new String[] {
-			    ReviewDatabaseHandler.KEY_NAME,
-			   	ReviewDatabaseHandler.KEY_RATING,
-			    ReviewDatabaseHandler.KEY_REVIEW};
-
-		// the XML defined views which the data will be bound to
-		int[] to = new int[] {
-				R.id.review_name,
-			    R.id.review_ratingBar,  
-			    R.id.review_review,};
-
-		// create the adapter using the cursor pointing to the desired data
-		// as well as the layout information
-		dataAdapter = new SimpleCursorAdapter(getActivity(), R.layout.review_results,
-				cursor, columns, to, 0);
-
-		ListView listView = (ListView) getView().findViewById(R.id.reviewlistView);
-		// Assign adapter to ListView
-		listView.setAdapter(dataAdapter);*/
-
     }
      
  

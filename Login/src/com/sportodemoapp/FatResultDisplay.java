@@ -5,7 +5,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -88,13 +90,17 @@ public class FatResultDisplay extends Activity{
 	
 	private class FatFetch extends AsyncTask<String, String, JSONObject> {
 		String placeid;
+		 private ProgressDialog pDialog;
 		@Override
 	    protected void onPreExecute() {
 	        super.onPreExecute();
 	        dbHelper.open();
 			placeid = dbHelper.fetchLocationId(compositeKey);	
-			  Toast.makeText(getApplicationContext(),
-                      placeid+selectedCategory+selectedDate, Toast.LENGTH_SHORT).show();
+            pDialog = new ProgressDialog(FatResultDisplay.this);
+            pDialog.setTitle("Contacting Servers");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
 			
 	}
 		
@@ -105,9 +111,12 @@ public class FatResultDisplay extends Activity{
 	         return json;
 	     }
 		 
-		 @Override
+		 @SuppressWarnings("deprecation")
+		@Override
 	     protected void onPostExecute(JSONObject json) {
 			 try{
+    			 pDialog.setMessage("Retreiving");
+                 pDialog.setTitle("FAT Data");
 			 JSONArray jsonMainNode = json.optJSONArray("fat");
              int lengthJsonArr = jsonMainNode.length();  
              if(lengthJsonArr!=0)
@@ -127,9 +136,26 @@ public class FatResultDisplay extends Activity{
              	JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
              	String name = jsonChildNode.getString(KEY_FIRSTNAME).concat(jsonChildNode.getString(KEY_LASTNAME));
              	fDb.addResults(name, jsonChildNode.getString(KEY_EMAIL),jsonChildNode.getString(KEY_MOBILE),jsonChildNode.getString(KEY_DATEOFPLAY),jsonChildNode.getString(KEY_STARTTIME),jsonChildNode.getString(KEY_NOOFPLAYERS),jsonChildNode.getString(KEY_GAME),jsonChildNode.getString(KEY_ADDINFO));
-                 }
+             	 pDialog.dismiss();    
+             }
              if(flag){
             	 displayListView();
+             }
+             else{
+            	 pDialog.dismiss();
+            	 AlertDialog alertDialog = new AlertDialog.Builder(
+                         FatResultDisplay.this).create();
+         alertDialog.setTitle("Sorry");
+         alertDialog.setMessage("No entrants yet! Your chance to be the first one!");
+
+         alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+             public void onClick(DialogInterface dialog, int which) {
+                                  }
+         });
+  
+         // Showing Alert Message
+         alertDialog.show();
+
              }
 			 }
 			 catch (JSONException e) {
