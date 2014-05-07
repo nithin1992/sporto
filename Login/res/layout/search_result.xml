@@ -1,122 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/list_selector2"
-    android:orientation="horizontal"
-    android:padding="3dip" >
+    android:layout_height="fill_parent"
+    android:fillViewport="true" >
 
-    <TextView
-        android:id="@+id/rating"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/name"
-        android:text="4.5"
-        android:textColor="#ffffff"
-        android:textSize="15dp" />
+        android:background="@drawable/list_selector2"
+        android:orientation="horizontal"
+        android:padding="3dip" >
 
-    <TextView
-        android:id="@+id/locality"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/name"
-        android:layout_below="@+id/star"
-        android:layout_marginTop="1dp"
-        android:text="locality"
-        android:textColor="#808080"
-        android:textSize="15dp"
-        android:typeface="serif" />
+        <TextView
+            android:id="@+id/locality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/name"
+            android:layout_below="@+id/star"
+            android:layout_marginTop="1dp"
+            android:text="locality"
+            android:textColor="#808080"
+            android:textSize="15dp"
+            android:typeface="serif" />
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="name"
-        android:textColor="#00bfff"
-        android:textSize="20dp"
-        android:typeface="sans" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="name"
+            android:textColor="#00bfff"
+            android:textSize="20dp"
+            android:typeface="sans" />
 
-    <View
-        android:id="@+id/myRectangledistance"
-        android:layout_width="60dp"
-        android:layout_height="25dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/ratingno"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/rectangle" />
+        <View
+            android:id="@+id/myRectangledistance"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:layout_above="@+id/locality"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rectangle" />
 
-    <TextView
-        android:id="@+id/distance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/myRectangledistance"
-        android:layout_alignLeft="@+id/myRectangledistance"
-        android:layout_alignRight="@+id/myRectangledistance"
-        android:layout_alignTop="@+id/myRectangledistance"
-        android:paddingLeft="10dp"
-        android:paddingTop="3dp"
-        android:text="10"
-        android:textSize="13dp" />
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/myRectangledistance"
+            android:layout_alignLeft="@+id/myRectangledistance"
+            android:layout_alignRight="@+id/myRectangledistance"
+            android:layout_alignTop="@+id/myRectangledistance"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"
+            android:text="10"
+            android:textSize="13dp" />
 
-    <TextView
-        android:id="@+id/km"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/distance"
-        android:layout_toRightOf="@+id/distance"
-        android:text="Km"
-        android:textSize="13dp" />
+        <TextView
+            android:id="@+id/km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/distance"
+            android:layout_toRightOf="@+id/distance"
+            android:text="Km"
+            android:textSize="13dp" />
 
-    <ImageView
-        android:id="@+id/reviewimage"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/name"
-        android:layout_marginRight="28dp"
-        android:src="@drawable/ic_action_paste" />
+        <RatingBar
+            android:id="@+id/star"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/name"
+            android:layout_below="@+id/name" />
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/reviewno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/ratingno"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/reviewimage"
-        android:layout_marginRight="25dp"
-        android:text="10 Reviews"
-        android:textColor="#808080"
-        android:textSize="5sp" />
-
-    <ImageView
-        android:id="@+id/ratingimage"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignTop="@+id/name"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@+id/reviewimage"
-        android:src="@drawable/ic_action_good" />
-
-    <TextView
-        android:id="@+id/ratingno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ratingimage"
-        android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/reviewno"
-        android:text="100 Votes"
-        android:textColor="#808080"
-        android:textSize="5sp" />
-
-    <RatingBar
-        android:id="@+id/star"
-        style="?android:attr/ratingBarStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/name"
-        android:layout_below="@+id/name" />
-
-</RelativeLayout>
+</ScrollView>

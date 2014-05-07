@@ -1,14 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbg" >
 
     <TextView
-        android:id="@+id/txtLabel"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Photos View"
-        android:textSize="16dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:text="Can&apos;t find your Place? Add here"
+        android:textColor="#3b5998"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/box"
+        android:hint="Called As"
+        android:imeOptions="actionNext"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/mobile"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/box"
+        android:hint="Contact No."
+        android:imeOptions="actionNext"
+        android:inputType="phone"
+        android:paddingLeft="5dp"
+        android:textColor="#000000"
+        android:textSize="15dp" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/call"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_alignBaseline="@+id/mobile"
+        android:layout_alignBottom="@+id/mobile"
+        android:layout_alignRight="@+id/name"
+        android:background="@drawable/box"
+        android:hint="Alternate No."
+        android:imeOptions="actionNext"
+        android:inputType="phone"
+        android:paddingLeft="5dp"
+        android:textColor="#000000"
+        android:textSize="15dp" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/mobile"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/box"
+        android:ems="10"
+        android:hint="Address"
+        android:imeOptions="actionNext"
+        android:inputType="textPostalAddress"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/locality"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/address"
+        android:layout_below="@+id/address"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/box"
+        android:hint="Locality"
+        android:imeOptions="actionNext"
+        android:paddingLeft="5dp"
+        android:textColor="#000000"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/timing"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_alignBaseline="@+id/locality"
+        android:layout_alignBottom="@+id/locality"
+        android:layout_alignRight="@+id/address"
+        android:background="@drawable/box"
+        android:ems="10"
+        android:hint="Timing"
+        android:imeOptions="actionNext"
+        android:inputType="time"
+        android:paddingLeft="5dp"
+        android:textColor="#000000"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/games"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/locality"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/box"
+        android:ems="10"
+        android:hint="Games available with there costs/hr"
+        android:imeOptions="actionNext"
+        android:inputType="textMultiLine"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/website"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/games"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/box"
+        android:hint="Website"
+        android:imeOptions="actionNext"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textSize="15dp" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/website"
+        android:layout_below="@+id/website"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button"
+        android:paddingLeft="10dp"
+        android:text="submit"
+        android:textColor="#000000"
+        android:textSize="13dp" />
 
 </RelativeLayout>

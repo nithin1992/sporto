@@ -80,15 +80,15 @@
         android:background="@drawable/box"
         android:ems="10"
         android:hint="Number of players"
-        android:inputType="number"
         android:imeOptions="actionNext"
+        android:inputType="number"
         android:paddingLeft="5dp"
         android:singleLine="true"
         android:textColor="#000000"
         android:textSize="15dp" />
 
     <MultiAutoCompleteTextView
-        android:id="@+id/addtext"
+        android:id="@+id/addinfo"
         android:layout_width="fill_parent"
         android:layout_height="35dp"
         android:layout_below="@+id/number"
@@ -112,7 +112,6 @@
         android:layout_below="@+id/addtext"
         android:layout_marginTop="25dp"
         android:background="@drawable/button"
-        android:paddingLeft="10dp"
         android:text="submit"
         android:textColor="#000000"
         android:textSize="13dp" />
@@ -121,41 +120,24 @@
         android:id="@+id/fat"
         android:layout_width="160dp"
         android:layout_height="35dp"
-        android:layout_alignLeft="@+id/addtext"
-        android:layout_below="@+id/addtext"
-        android:layout_marginTop="25dp"
+        android:layout_alignRight="@+id/submit1"
+        android:layout_below="@+id/find"
+        android:layout_marginTop="15dp"
         android:background="@drawable/button"
-        android:paddingRight="23dp"
         android:text="find a team?"
         android:textColor="#000000"
         android:textSize="13dp" />
 
     <TextView
-        android:id="@+id/or"
+        android:id="@+id/find"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/fat"
-        android:layout_alignBottom="@+id/fat"
-        android:layout_centerHorizontal="true"
-        android:text="OR"
-        android:textSize="15dp" />
-
-    <View
-        android:id="@+id/orbox"
-        android:layout_width="70dp"
-        android:layout_height="35dp"
-        android:layout_alignTop="@+id/submit"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/orbox" />
-
-    <TextView
-        android:id="@+id/or"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/fat"
-        android:layout_alignBottom="@+id/fat"
-        android:layout_centerHorizontal="true"
-        android:text="OR"
-        android:textSize="15dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/submit1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Wanna Find A Team?"
+        android:textColor="#3b5998"
+        android:textSize="20dp" />
 
 </RelativeLayout>
