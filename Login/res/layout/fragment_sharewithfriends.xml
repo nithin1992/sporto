@@ -4,11 +4,56 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/txtLabel"
+        android:id="@+id/fp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Pages View"
-        android:textSize="16dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:text="Do you like our App??"
+        android:textColor="#3b5998"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/fp1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/fp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Get your Friends too Up and running with our App"
+        android:textColor="#3b5998"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/fp1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/box"
+        android:hint="Enter your friend&apos;s email address"
+        android:imeOptions="actionNext"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textSize="15dp" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/email"
+        android:layout_below="@+id/email"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button"
+        android:text="Send it"
+        android:textColor="#000000"
+        android:textSize="13dp" />
 
 </RelativeLayout>

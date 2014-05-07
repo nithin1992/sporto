@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Sporto</string>
+    <string name="action">about us</string>
     <string name="action_settings">Exit</string>
     <string name="forgot_password"><u><b><i>Forgot password?</i></b></u></string>
     <string name="drawer_open">Slider Menu Opened</string>
