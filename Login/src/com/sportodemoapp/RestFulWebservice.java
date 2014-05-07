@@ -131,7 +131,7 @@ public class RestFulWebservice extends Fragment{
             NetworkInfo netInfo = cm.getActiveNetworkInfo();
             if (netInfo != null && netInfo.isConnected()) {
                 try {
-                    URL url = new URL("http://www.google.com");
+                    URL url = new URL("http://betaenggindustries.com/sporto_api/index.php");
                     HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
                     urlc.setConnectTimeout(3000);
                     urlc.connect();
