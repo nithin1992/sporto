@@ -171,8 +171,11 @@ public class FatFragment extends Fragment{
     	int yy = calendar.get(Calendar.YEAR);
     	int mm = calendar.get(Calendar.MONTH);
     	int dd = calendar.get(Calendar.DAY_OF_MONTH);
-    	
-    	return new DatePickerDialog(getActivity(), this, yy, mm, dd);
+    	DatePickerDialog d = new DatePickerDialog(getActivity(), this, yy, mm, dd);  
+    	DatePicker dp = d.getDatePicker(); 
+    	dp.setMinDate(calendar.getTimeInMillis());
+    	return d;    	
+    	//return new DatePickerDialog(getActivity(), this, yy, mm, dd);
     	}
     	 
     	public void onDateSet(DatePicker view, int yy, int mm, int dd) {
